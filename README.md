@@ -43,6 +43,10 @@ Releases for a browser are available for download from GitHub.
     // if you want your enum to have a name define it in the options
     var myEnum = new Enum(['A', 'B', 'C'], { name: 'MyEnum' });
 
+    // or
+    var myEnum = new Enum(['A', 'B', 'C'], 'MyEnum');
+
+
     // get your item
     myEnum.A
 

@@ -43,6 +43,11 @@
 
 
     function Enum(map, options) {
+
+        if (options && typeof(options) === 'string') {
+            options = { name: options };
+        }
+
         this._options = options || {};
         this._options.separator = this._options.separator || ' | ';
 
