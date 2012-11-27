@@ -51,6 +51,8 @@
         this._options = options || {};
         this._options.separator = this._options.separator || ' | ';
 
+        this.enums = [];
+
         if (map.length) {
             var array = map;
             map = {};
@@ -61,10 +63,11 @@
         }
 
         for (var member in map) {
-            if ((this._options.name && member === 'name') || member === '_options' || member === 'get' || member === 'getKey' || member === 'getValue') {
+            if ((this._options.name && member === 'name') || member === '_options' || member === 'get' || member === 'getKey' || member === 'getValue' || member === 'enums') {
                 throw new Error('Enum key "' + member + '" is a reserved word!');
             }
             this[member] = new EnumItem(member, map[member]);
+            this.enums.push(this[member]);
         }
 
         if (this._options.name) {

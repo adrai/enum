@@ -12,8 +12,8 @@ Releases for a browser are available for download from GitHub.
 
 | **Version** | **Description** | **Size** |
 |:------------|:----------------|:---------|
-| `enum-0.1.0.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/enum-0.1.0.js) |
-| `enum-0.1.0.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/enum-0.1.0.min.js) |
+| `enum-0.2.0.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/enum-0.2.0.js) |
+| `enum-0.2.0.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/enum-0.2.0.min.js) |
 
 # Installation (node.js)
 
@@ -68,6 +68,10 @@ Releases for a browser are available for download from GitHub.
 
     // get your key
     myEnum.A.key
+
+
+    // get all items
+    myEnum.enums // returns all enums in an array
 
 
     // compare

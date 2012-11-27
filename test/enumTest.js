@@ -17,7 +17,7 @@ describe('Enum', function() {
         });
     }
 
-    describe('defining a simple enum', function() {
+    describe('defining an enum', function() {
 
         var myEnum;
 
@@ -46,6 +46,16 @@ describe('Enum', function() {
 
                     expect(myEnum.C).to.have.property('value', 4);
                     expect(myEnum.C).to.have.property('key', 'C');
+
+                });
+
+                it('get all enum values', function() {
+
+                    expect(myEnum.enums).to.be.an('array');
+                    expect(myEnum.enums).to.have.length(3);
+                    expect(myEnum.enums).to.contain(myEnum.A);
+                    expect(myEnum.enums).to.contain(myEnum.B);
+                    expect(myEnum.enums).to.contain(myEnum.C);
 
                 });
 
