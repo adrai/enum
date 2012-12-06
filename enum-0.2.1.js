@@ -1,5 +1,12 @@
-(function () {
+(function (root, module, global, define) {
 
+    "use strict";
+
+    /**
+     * Represents an Item of an Enum.
+     * @param {String} key   The Enum key.
+     * @param {Number} value The Enum value.
+     */
     function EnumItem(key, value) {
         this.key = key;
         this.value = value;
@@ -7,6 +14,11 @@
 
     EnumItem.prototype = {
 
+        /**
+         * Checks if the flagged EnumItem has the passing object.
+         * @param  {EnumItem || String || Number} value The object to check with.
+         * @return {Boolean}                            The check result.
+         */
         has: function(value) {
             if (value instanceof EnumItem) {
                 return (this.value & value.value) !== 0;
@@ -17,6 +29,11 @@
             }
         },
 
+        /**
+         * Checks if the EnumItem is the same as the passing object.
+         * @param  {EnumItem || String || Number} key The object to check with.
+         * @return {Boolean}                          The check result.
+         */
         is: function(key) {
             if (key instanceof EnumItem) {
                 return this.key === key.key;
@@ -27,14 +44,26 @@
             }
         },
 
+        /**
+         * Returns String representation of this EnumItem.
+         * @return {String} String representation of this EnumItem.
+         */
         toString: function() {
             return this.key;
         },
 
+        /**
+         * Returns JSON object representation of this EnumItem.
+         * @return {String} JSON object representation of this EnumItem.
+         */
         toJSON: function() {
             return this.key;
         },
 
+        /**
+         * Returns the value to compare with.
+         * @return {String} The value to compare with.
+         */
         valueOf: function() {
             return this.key;
         }
@@ -42,6 +71,11 @@
     };
 
 
+    /**
+     * Represents an Enum with enum items.
+     * @param {Array || Object}  map     This are the enum items.
+     * @param {String || Object} options This are options. [optional]
+     */
     function Enum(map, options) {
 
         if (options && typeof(options) === 'string') {
@@ -77,6 +111,11 @@
 
     Enum.prototype = {
 
+        /**
+         * Returns the appropriate EnumItem key.
+         * @param  {EnumItem || String || Number} key The object to get with.
+         * @return {String}                           The get result.
+         */
         getKey: function(value) {
             var item = this.get(value);
             if (item) {
@@ -86,6 +125,11 @@
             }
         },
 
+        /**
+         * Returns the appropriate EnumItem value.
+         * @param  {EnumItem || String || Number} key The object to get with.
+         * @return {Number}                           The get result.
+         */
         getValue: function(key) {
             var item = this.get(key);
             if (item) {
@@ -95,6 +139,11 @@
             }
         },
 
+        /**
+         * Returns the appropriate EnumItem.
+         * @param  {EnumItem || String || Number} key The object to get with.
+         * @return {EnumItem}                         The get result.
+         */
         get: function(key) {
             if (key instanceof EnumItem) {
                 return key;
@@ -143,17 +192,22 @@
     };
 
 
-    if (typeof(module) !== 'undefined' && module.exports) {
+    if (module && module.exports) {
         module.exports = Enum;
-    } else if (typeof(define) !== 'undefined') {
+    } else if (define) {
         define(function () {
             return Enum;
         });
     } else {
-        this.Enum = Enum;
+        root.Enum = Enum;
     }
 
-    if (typeof(module) !== 'undefined' && module.exports && global) {
+    if (module && module.exports && global) {
+
+        /**
+         * Registers the Enum Type globally in node.js.
+         * @param  {String} key Global variable. [optional]
+         */
         Enum.register = function(key) {
             key = key || 'Enum';
             if (!global[key]) {
@@ -162,4 +216,9 @@
         };
     }
 
-}());
+}(
+    this,
+    typeof(module) !== 'undefined' ? module : undefined,
+    typeof(global) !== 'undefined' ? global : undefined,
+    typeof(define) !== 'undefined' ? define : undefined
+));
