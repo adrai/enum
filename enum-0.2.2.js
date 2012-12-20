@@ -20,7 +20,7 @@
          * @return {Boolean}                            The check result.
          */
         has: function(value) {
-            if (value instanceof EnumItem) {
+            if (value instanceof EnumItem || (typeof(value) === 'object' && value.key !== undefined && value.value !== undefined)) {
                 return (this.value & value.value) !== 0;
             } else if (typeof(value) === 'string') {
                 return this.key.indexOf(value) >= 0;
@@ -35,7 +35,7 @@
          * @return {Boolean}                          The check result.
          */
         is: function(key) {
-            if (key instanceof EnumItem) {
+            if (key instanceof EnumItem || (typeof(key) === 'object' && key.key !== undefined && key.value !== undefined)) {
                 return this.key === key.key;
             } else if (typeof(key) === 'string') {
                 return this.key === key;
@@ -145,7 +145,7 @@
          * @return {EnumItem}                         The get result.
          */
         get: function(key) {
-            if (key instanceof EnumItem) {
+            if (key instanceof EnumItem || (typeof(key) === 'object' && key.key !== undefined && key.value !== undefined)) {
                 return key;
             } else if (typeof(key) === 'string') {
                 if (key.indexOf(this._options.separator) > 0) {

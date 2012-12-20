@@ -286,6 +286,12 @@ describe('Enum', function() {
 
                 });
 
+                it('stringify JSON', function() {
+
+                    expect(JSON.stringify(myEnum.A)).to.eql('"A"');
+
+                });
+
             });
 
         });
