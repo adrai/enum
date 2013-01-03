@@ -17,99 +17,99 @@ Releases for a browser are available for download from GitHub.
 
 # Installation (node.js)
 
-  $ npm install enum
+    $ npm install enum
 
 # Installation (browser, library is AMD compatible)
 
-  <script src="enum.js"></script>
+    <script src="enum.js"></script>
 
 # Usage
 
-  // use it as module
-  var Enum = require('enum');
+    // use it as module
+    var Enum = require('enum');
 
-  // or extend node.js with this new type
-  require('enum').register();
+    // or extend node.js with this new type
+    require('enum').register();
 
-  // define a simple enum (automatically flaggable -> A: 0x01, B: 0x02, C: 0x04)
-  var myEnum = new Enum(['A', 'B', 'C']);
+    // define a simple enum (automatically flaggable -> A: 0x01, B: 0x02, C: 0x04)
+    var myEnum = new Enum(['A', 'B', 'C']);
 
-  // define an enum with own values
-  var myEnum = new Enum({'A': 1, 'B': 2, 'C': 4});
+    // define an enum with own values
+    var myEnum = new Enum({'A': 1, 'B': 2, 'C': 4});
 
-  // if defining an flaggable enum, you can define your own separator (default is ' | ')
-  var myEnum = new Enum(['A', 'B', 'C'], { separator: ' | ' });
+    // if defining an flaggable enum, you can define your own separator (default is ' | ')
+    var myEnum = new Enum(['A', 'B', 'C'], { separator: ' | ' });
 
-  // if you want your enum to have a name define it in the options
-  var myEnum = new Enum(['A', 'B', 'C'], { name: 'MyEnum' });
+    // if you want your enum to have a name define it in the options
+    var myEnum = new Enum(['A', 'B', 'C'], { name: 'MyEnum' });
 
-  // or
-  var myEnum = new Enum(['A', 'B', 'C'], 'MyEnum');
-
-
-  // get your item
-  myEnum.A
-
-  // or
-  myEnum.get('A')
-
-  // or
-  myEnum.get(1)
-
-  // or
-  myEnum.get('A | B')
-
-  // or
-  myEnum.get(3)
+    // or
+    var myEnum = new Enum(['A', 'B', 'C'], 'MyEnum');
 
 
-  // get your value
-  myEnum.A.value
+    // get your item
+    myEnum.A
 
-  // get your key
-  myEnum.A.key
+    // or
+    myEnum.get('A')
 
+    // or
+    myEnum.get(1)
 
-  // get all items
-  myEnum.enums // returns all enums in an array
+    // or
+    myEnum.get('A | B')
 
-
-  // compare
-  myEnum.A.is(myEnum.A)
-
-  // or
-  myEnum.A.is('A')
-
-  // or
-  myEnum.A.is(1)
-
-  // or
-  myEnum.A == 'A'
-
-  // or
-  myEnum.A == myEnum.A
-
-  // or
-  myEnum.A === myEnum.A
+    // or
+    myEnum.get(3)
 
 
-  // check flag
-  var myItem = myEnum.get(3); // or [myEnum.get('A | B')]
-  myItem.has(myEnum.A)
+    // get your value
+    myEnum.A.value
 
-  // or
-  myItem.has('A')
-
-  // or
-  myItem.has(1)
+    // get your key
+    myEnum.A.key
 
 
-  // other functions
-  myItem.toString() // returns A | C
-  myItem.toJSON() // returns A | C
-  myItem.valueOf() // returns A | C
+    // get all items
+    myEnum.enums // returns all enums in an array
 
-  JSON.stringify(myItem) // returns A | C
+
+    // compare
+    myEnum.A.is(myEnum.A)
+
+    // or
+    myEnum.A.is('A')
+
+    // or
+    myEnum.A.is(1)
+
+    // or
+    myEnum.A == 'A'
+
+    // or
+    myEnum.A == myEnum.A
+
+    // or
+    myEnum.A === myEnum.A
+
+
+    // check flag
+    var myItem = myEnum.get(3); // or [myEnum.get('A | B')]
+    myItem.has(myEnum.A)
+
+    // or
+    myItem.has('A')
+
+    // or
+    myItem.has(1)
+
+
+    // other functions
+    myItem.toString() // returns A | C
+    myItem.toJSON() // returns A | C
+    myItem.valueOf() // returns A | C
+
+    JSON.stringify(myItem) // returns A | C
 
 
 # License
