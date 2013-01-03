@@ -108,7 +108,7 @@ Releases for a browser are available for download from GitHub.
     myItem.toString() // returns A | C
     myItem.toJSON() // returns A | C
     myItem.valueOf() // returns A | C
-
+    
     JSON.stringify(myItem) // returns A | C
 
 
