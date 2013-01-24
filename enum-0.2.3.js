@@ -97,7 +97,7 @@
     }
 
     for (var member in map) {
-      if ((this._options.name && member === 'name') || member === '_options' || member === 'get' || member === 'getKey' || member === 'getValue' || member === 'enums') {
+      if ((this._options.name && member === 'name') || member === '_options' || member === 'get' || member === 'getKey' || member === 'getValue' || member === 'enums' || member === 'isFlaggable') {
         throw new Error('Enum key "' + member + '" is a reserved word!');
       }
       this[member] = new EnumItem(member, map[member]);
@@ -107,6 +107,21 @@
     if (this._options.name) {
       this.name = this._options.name;
     }
+
+    var self = this;
+
+    function isFlaggable() {
+      for (var i = 0, len = self.enums.length; i < len; i++) {
+        var e = self.enums[i];
+        
+        if (!((e.value !== 0) && !(e.value & (e.value - 1)))) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    this.isFlaggable = isFlaggable();
   }
 
   Enum.prototype = {
@@ -172,15 +187,18 @@
         }
 
         var result = null;
-        for (var n in this) {
-          if (this.hasOwnProperty(n)) {
-            if ((key & this[n].value) !== 0) {
-              if (result) {
-                result += this._options.separator;
-              } else {
-                result = '';
+
+        if (this.isFlaggable) {
+          for (var n in this) {
+            if (this.hasOwnProperty(n)) {
+              if ((key & this[n].value) !== 0) {
+                if (result) {
+                  result += this._options.separator;
+                } else {
+                  result = '';
+                }
+                result += n;
               }
-              result += n;
             }
           }
         }

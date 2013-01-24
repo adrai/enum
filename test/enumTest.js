@@ -296,6 +296,52 @@ describe('Enum', function() {
 
     });
 
+    describe('beeing flagged', function() {
+
+      var myFlaggedEnum;
+
+      before(function() {
+        myFlaggedEnum = new e({'A': 1, 'B': 2, 'C': 4});
+      });
+
+      it('it should not get the flagged value', function() {
+
+        expect(myFlaggedEnum.get(1).is(myFlaggedEnum.A));
+        expect(myFlaggedEnum.get(2).is(myFlaggedEnum.B));
+        expect(myFlaggedEnum.get(3).is('B | B2'));
+
+      });
+
+    });
+
+    describe('not beeing flagged', function() {
+
+      var myFlaggedEnum;
+
+      before(function() {
+        myFlaggedEnum = new e({'A': 1, 'B': 2, 'B2': 3, 'C': 4});
+      });
+
+      it('it should not get the flagged value', function() {
+
+        expect(myFlaggedEnum.get(1).is(myFlaggedEnum.A));
+        expect(myFlaggedEnum.get(2).is(myFlaggedEnum.B));
+        expect(myFlaggedEnum.get(3).is(myFlaggedEnum.B2));
+
+      });
+
+      describe('getting a non matching value', function() {
+
+        it('it should return undefined', function() {
+
+          expect(myFlaggedEnum.get(5)).to.not.be.ok();
+
+        });
+
+      });
+
+    });
+
   });
 
 });
