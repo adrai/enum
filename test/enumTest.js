@@ -339,7 +339,7 @@ describe('Enum', function() {
       var myNonFlaggedEnum;
 
       before(function() {
-        myNonFlaggedEnum = new e({'A': 1, 'B': 2, 'B2': 3, 'C': 4});
+        myNonFlaggedEnum = new e({'0': 0, 'A': 1, 'B': 2, 'B2': 3, 'C': 4});
       });
 
       it('it should not get the flagged value', function() {
@@ -362,13 +362,23 @@ describe('Enum', function() {
 
       describe('call get with an non valid value and get', function() {
 
-          it('null', function() {
+        it('null', function() {
 
-            expect(myNonFlaggedEnum.get(12345)).to.eql(null);
-
-          });
+          expect(myNonFlaggedEnum.get(12345)).to.eql(null);
 
         });
+
+      });
+
+      describe('call get with 0 and get', function() {
+
+        it('null', function() {
+
+          expect(myNonFlaggedEnum.get(0)).to.not.eql(null);
+
+        });
+
+      });
 
     });
 
