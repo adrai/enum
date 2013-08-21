@@ -172,7 +172,7 @@ describe('Enum', function() {
 
           });
 
-        });                
+        });
 
         describe('call get and get', function() {
 
@@ -196,13 +196,33 @@ describe('Enum', function() {
 
           });
 
-          it(' an enum item by key', function() {
+          it('an enum item by key', function() {
 
             expect(myEnum.get(1)).to.have.property('value', 1);
             expect(myEnum.get(1)).to.have.property('key', 'A');
 
             expect(myEnum.get(4)).to.have.property('value', 4);
             expect(myEnum.get(4)).to.have.property('key', 'C');
+
+          });
+
+        });
+
+        describe('call get with null and get', function() {
+
+          it('null', function() {
+
+            expect(myEnum.get(null)).to.eql(null);
+
+          });
+
+        });
+
+        describe('call get with undefined and get', function() {
+
+          it('null', function() {
+
+            expect(myEnum.get(undefined)).to.eql(null);
 
           });
 
@@ -316,17 +336,17 @@ describe('Enum', function() {
 
     describe('not beeing flagged', function() {
 
-      var myFlaggedEnum;
+      var myNonFlaggedEnum;
 
       before(function() {
-        myFlaggedEnum = new e({'A': 1, 'B': 2, 'B2': 3, 'C': 4});
+        myNonFlaggedEnum = new e({'A': 1, 'B': 2, 'B2': 3, 'C': 4});
       });
 
       it('it should not get the flagged value', function() {
 
-        expect(myFlaggedEnum.get(1).is(myFlaggedEnum.A));
-        expect(myFlaggedEnum.get(2).is(myFlaggedEnum.B));
-        expect(myFlaggedEnum.get(3).is(myFlaggedEnum.B2));
+        expect(myNonFlaggedEnum.get(1).is(myNonFlaggedEnum.A));
+        expect(myNonFlaggedEnum.get(2).is(myNonFlaggedEnum.B));
+        expect(myNonFlaggedEnum.get(3).is(myNonFlaggedEnum.B2));
 
       });
 
@@ -334,11 +354,21 @@ describe('Enum', function() {
 
         it('it should return undefined', function() {
 
-          expect(myFlaggedEnum.get(5)).to.not.be.ok();
+          expect(myNonFlaggedEnum.get(5)).to.not.be.ok();
 
         });
 
       });
+
+      describe('call get with an non valid value and get', function() {
+
+          it('null', function() {
+
+            expect(myNonFlaggedEnum.get(12345)).to.eql(null);
+
+          });
+
+        });
 
     });
 
