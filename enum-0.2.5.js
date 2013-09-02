@@ -113,7 +113,7 @@
     function isFlaggable() {
       for (var i = 0, len = self.enums.length; i < len; i++) {
         var e = self.enums[i];
-        
+
         if (!((e.value !== 0) && !(e.value & (e.value - 1)))) {
           return false;
         }
@@ -163,7 +163,11 @@
       if (key === null || key === undefined) return null;
 
       if (key instanceof EnumItem || (typeof(key) === 'object' && key.key !== undefined && key.value !== undefined)) {
-        return key;
+        var foundIndex = this.enums.indexOf(key);
+        if (foundIndex >= 0) {
+          return key;
+        }
+        return null;
       } else if (typeof(key) === 'string') {
         if (key.indexOf(this._options.separator) > 0) {
           var parts = key.split(this._options.separator);

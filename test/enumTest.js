@@ -382,6 +382,20 @@ describe('Enum', function() {
 
     });
 
+    describe('and getting an item of it from an other enum', function () {
+
+      it('it should return null', function() {
+
+        var myEnum1 = new e(['A', 'B', 'C']);
+
+        var myEnum2 = new e({'A': 1, 'B': 2, 'C': 4});
+
+        expect(myEnum2.get(myEnum1.A)).to.eql(null);
+
+      });
+
+    });
+
   });
 
 });
