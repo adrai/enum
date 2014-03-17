@@ -167,7 +167,10 @@
         if (foundIndex >= 0) {
           return key;
         }
-        return null;
+        if (!this.isFlaggable || (this.isFlaggable && key.key.indexOf(this._options.separator) < 0)) {
+          return null;
+        }
+        return this.get(key.key);
       } else if (typeof(key) === 'string') {
         if (key.indexOf(this._options.separator) > 0) {
           var parts = key.split(this._options.separator);

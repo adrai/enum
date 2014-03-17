@@ -176,13 +176,22 @@ describe('Enum', function() {
 
         describe('call get and get', function() {
 
-          it('get an enum item by item', function() {
+          it('an enum item by item', function() {
 
             expect(myEnum.get(myEnum.A)).to.have.property('value', 1);
             expect(myEnum.get(myEnum.A)).to.have.property('key', 'A');
 
             expect(myEnum.get(myEnum.C)).to.have.property('value', 4);
             expect(myEnum.get(myEnum.C)).to.have.property('key', 'C');
+
+          });
+
+          it('an enum item by flagged item', function() {
+
+            var item = myEnum.get('A | B');
+
+            expect(myEnum.get(item)).to.have.property('value', 3);
+            expect(myEnum.get(item)).to.have.property('key', 'A | B');
 
           });
 
