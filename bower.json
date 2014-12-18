@@ -1,0 +1,12 @@
+{
+  "name": "enum",
+  "version": "0.2.6",
+  "main": "enum-0.2.6.js",
+  "ignore": [
+    "test",
+    "/lodash.js",
+    "index.js",
+    "package.json",
+    "Jakefile"
+  ]
+}
