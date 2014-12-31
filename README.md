@@ -145,11 +145,25 @@ Releases for a browser are available for download from GitHub.
     Object.getOwnPropertyDescriptor(myEnum, 'Red'); //=> Object {value: EnumItem, writable: false, enumerable: true, configurable: false}
     Object.isExtensible(myEnum); //=> false
     myEnum instanceof Enum; //=> true
+
+    //Instances of Enum created with 'new' from similar objects are not equal
+    myEnum1=new Enum({'A':1, 'B':2, 'C':4});
+    myEnum2=new Enum({'A':1, 'B':2, 'C':4});
+    myEnum1 == myEnum2 //=> false
+    myEnum1.A == myEnum2.A //=> false
+    myEnum1.A.value == myEnum2.A.value //=> true
     
     //This enum object has no properties other than those defined during its creation. Existing Data is 'Persistent' and preserves the original version
-    myEnum.Red.value; //=> 2
-    myEnum.Red = 5; //=> doesn't change the original value 2
-    myEnum.Rainbow = 6 //=> doesn't add to the enum object
+    myEnum.B.value; //=> 2
+    myEnum.B = 5; //=> Throws TypeError
+    delete myEnum.B; //=> false
+    myEnum.D = 6; //=> doesn't add to the enum object, silently ignores
+    myEnum.D; // undefined
+
+    //Try to define new property throws TypeError
+    Object.defineProperty(myEnum, D, {value:6, writable:false, enumerable:true});
+    //=>TypeError: Cannot define property:D, object is not extensible.
+
 
 
 # License
