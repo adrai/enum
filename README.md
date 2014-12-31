@@ -33,12 +33,27 @@ Releases for a browser are available for download from GitHub.
     require('enum').register();
 
     // define a simple enum (automatically flaggable -> A: 0x01, B: 0x02, C: 0x04)
+    //Uses bitwise 'OR' operation in between the values and creates enumerated constants. For example, if 'Read':1, 'Write':2, then ReadWrite= Read | Write = 1 | 2 = 3; 
     var myEnum = new Enum(['A', 'B', 'C']);
+    
+    //define a flagged enum object to create a multicolor option; just pass an array
+    var myEnum = new Enum([Black', 'Red', 'Green', 'Blue']);
+    myEnum; //=> Enum {_options: Object, enums: Array[4], Black: EnumItem, Red: EnumItem, Green: EnumItem….....}
+    myEnum.isFlaggable; //=> true
+
+    for(var i=1; i<8; i++){ console.log(myEnum.get(i).value + '=> '+ myEnum.get(i).key)}
+    1=> Black
+    2=> Red
+    3=> Black | Red
+    4=> Green
+    5=> Black | Green
+    6=> Red | Green
+    7=> Black | Red | Green
 
     // define an enum with own values
     var myEnum = new Enum({'A': 1, 'B': 2, 'C': 4});
 
-    // if defining an flaggable enum, you can define your own separator (default is ' | ')
+    // if defining a flaggable enum, you can define your own separator (default is ' | ')
     var myEnum = new Enum(['A', 'B', 'C'], { separator: ' | ' });
 
     // if you want your enum to have a name define it in the options
@@ -47,6 +62,18 @@ Releases for a browser are available for download from GitHub.
     // or
     var myEnum = new Enum(['A', 'B', 'C'], 'MyEnum');
 
+    //define enum type without flag
+    var myEnum = new Enum({'None': 0, 'Black':1, 'Red': 2, 'Red2': 3, 'Green': 4, 'Blue': 5});
+    myEnum; //=>  Enum {_options: Object, enums: Array[6], None: EnumItem, Black: EnumItem, Red: EnumItem…........}
+    myEnum.isFlaggable; //=> false
+
+    for(var i=0; i<=5; i++){ console.log(myEnum.get(i).value + '=> '+ myEnum.get(i).key)}
+    0=> None
+    1=> Black
+    2=> Red
+    3=> Red2
+    4=> Green
+    5=> Blue
 
     // get your item
     myEnum.A
@@ -111,6 +138,32 @@ Releases for a browser are available for download from GitHub.
     myItem.valueOf() // returns A | C
     
     JSON.stringify(myItem) // returns A | C
+
+    //Type Safety:
+    //Newly created enumerable objects are Type-Safe in a way that it's non-configurable and no longer extensible. 
+    //Each EnumItem has a beack-reference to a constructor and they are implicitly final.
+    Object.getOwnPropertyDescriptor(myEnum, 'Red'); //=> Object {value: EnumItem, writable: false, enumerable: true, configurable: false}
+    Object.isExtensible(myEnum); //=> false
+    myEnum instanceof Enum; //=> true
+
+    //Instances of Enum created with 'new' from similar objects are not equal
+    myEnum1=new Enum({'A':1, 'B':2, 'C':4});
+    myEnum2=new Enum({'A':1, 'B':2, 'C':4});
+    myEnum1 == myEnum2 //=> false
+    myEnum1.A == myEnum2.A //=> false
+    myEnum1.A.value == myEnum2.A.value //=> true
+    
+    //This enum object has no properties other than those defined during its creation. Existing Data is 'Persistent' and preserves the original version
+    myEnum.B.value; //=> 2
+    myEnum.B = 5; //=> Throws TypeError
+    delete myEnum.B; //=> false
+    myEnum.D = 6; //=> doesn't add to the enum object, silently ignores
+    myEnum.D; // undefined
+
+    //Try to define new property throws TypeError
+    Object.defineProperty(myEnum, D, {value:6, writable:false, enumerable:true});
+    //=>TypeError: Cannot define property:D, object is not extensible.
+
 
 
 # License
