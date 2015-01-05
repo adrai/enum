@@ -346,6 +346,7 @@ describe('Enum', function() {
           expect(function(){
             Object.defineProperty(myEnum, 'C', {value: 3, writable:true, configurable: true});
           }).to.throwError();
+          expect(myEnum.get('C')).to.have.property('value', 4);
           expect(myEnum).to.equal(myEnum);
         });
 
@@ -363,7 +364,8 @@ describe('Enum', function() {
 
           var deleteEnumItem = delete myEnum['A'];
           expect(deleteEnumItem).to.be(false);
-          expect(myEnum.get('A')).to.be(1);
+          expect(myEnum).to.have.property('A');
+          expect(myEnum.get('A')).to.have.property('value', 1);
           expect(myEnum).to.equal(myEnum); 
         });
 
