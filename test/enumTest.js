@@ -329,7 +329,7 @@ describe('Enum', function() {
 
         var myEnum;
         before(function(){
-        myEnum = new e{'A':1, 'B':2, 'C':4}; 
+        myEnum = new e({'A':1, 'B':2, 'C':4}); 
         });
 
         it('can not extend after creation, and remains persistent', function(){
@@ -381,8 +381,8 @@ describe('Enum', function() {
 
         it('creates unique identity for each property', function(){
 
-          var myEnum1 = new e{'A':1, 'B':2, 'C':4};
-          var myEnum2 = new e{'A':1, 'B':2, 'C':4};
+          var myEnum1 = new e({'A':1, 'B':2, 'C':4});
+          var myEnum2 = new e({'A':1, 'B':2, 'C':4});
           expect(myEnum1.A).not.to.equal(myEnum2.A);
           expect(myEnum1.B).not.to.equal(myEnum2.B);
           expect(myEnum1.C).not.to.equal(myEnum2.C);
