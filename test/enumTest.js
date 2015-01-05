@@ -332,17 +332,12 @@ describe('Enum', function() {
         myEnum = new e({'A':1, 'B':2, 'C':4}); 
         });
 
-        it('can not extend after creation, and remains persistent', function(){
-      
-          expect(function(){
-            Object.defineProperty(myEnum, 'D', {value: 8});
-          }).to.throwError();
-          expect(myEnum.D).to.be(undefined);
-          expect(myEnum).not.to.have.property('D', 8);
-          expect(myEnum).to.equal(myEnum);
+        it('can not extend after creation', function(){
+          var extendMyEnum = Object.isExtensible(myEnum);
+          expect(extendMyEnum).to.be(false);
          });
 
-        it('does not accept changes to property values, throws', function(){
+        it('does not accept changes to existing property values, throws', function(){
 
           expect(myEnum).to.have.property('C');
           expect(function(){
@@ -366,9 +361,8 @@ describe('Enum', function() {
 
         it('is persistent to deletes', function(){
 
-          expect(function(){
-            return delete myEnum['A'];
-          }).to.be(false);
+          var deleteEnumItem = delete myEnum['A'];
+          expect(deleteEnumItem).to.be(false);
           expect(myEnum.get('A')).to.be(1);
           expect(myEnum).to.equal(myEnum); 
         });
