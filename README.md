@@ -13,8 +13,8 @@ Releases for a browser are available for download from GitHub.
 
 | **Version** | **Description** | **Size** |
 |:------------|:----------------|:---------|
-| `enum-0.2.6.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/enum-0.2.6.js) |
-| `enum-0.2.6.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/enum-0.2.6.min.js) |
+| `enum-0.2.7.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/enum-0.2.7.js) |
+| `enum-0.2.7.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/enum-0.2.7.min.js) |
 
 # Installation (node.js)
 
@@ -33,9 +33,9 @@ Releases for a browser are available for download from GitHub.
     require('enum').register();
 
     // define a simple enum (automatically flaggable -> A: 0x01, B: 0x02, C: 0x04)
-    //Uses bitwise 'OR' operation in between the values and creates enumerated constants. For example, if 'Read':1, 'Write':2, then ReadWrite= Read | Write = 1 | 2 = 3; 
+    //Uses bitwise 'OR' operation in between the values and creates enumerated constants. For example, if 'Read':1, 'Write':2, then ReadWrite= Read | Write = 1 | 2 = 3;
     var myEnum = new Enum(['A', 'B', 'C']);
-    
+
     //define a flagged enum object to create a multicolor option; just pass an array
     var myEnum = new Enum([Black', 'Red', 'Green', 'Blue']);
     myEnum; //=> Enum {_options: Object, enums: Array[4], Black: EnumItem, Red: EnumItem, Green: EnumItem….....}
@@ -136,11 +136,11 @@ Releases for a browser are available for download from GitHub.
     myItem.toString() // returns A | C
     myItem.toJSON() // returns A | C
     myItem.valueOf() // returns A | C
-    
+
     JSON.stringify(myItem) // returns A | C
 
     //Type Safety:
-    //Newly created enumerable objects are Type-Safe in a way that it's non-configurable and no longer extensible. 
+    //Newly created enumerable objects are Type-Safe in a way that it's non-configurable and no longer extensible.
     //Each EnumItem has a beack-reference to a constructor and they are implicitly final.
     Object.getOwnPropertyDescriptor(myEnum, 'Red'); //=> Object {value: EnumItem, writable: false, enumerable: true, configurable: false}
     Object.isExtensible(myEnum); //=> false
@@ -152,7 +152,7 @@ Releases for a browser are available for download from GitHub.
     myEnum1 == myEnum2 //=> false
     myEnum1.A == myEnum2.A //=> false
     myEnum1.A.value == myEnum2.A.value //=> true
-    
+
     //This enum object has no properties other than those defined during its creation. Existing Data is 'Persistent' and preserves the original version
     myEnum.B.value; //=> 2
     myEnum.B = 5; //=> Throws TypeError
@@ -168,7 +168,7 @@ Releases for a browser are available for download from GitHub.
 
 # License
 
-Copyright (c) 2014 Adriano Raiano
+Copyright (c) 2015 Adriano Raiano
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,7 +1,7 @@
 {
   "author": "adrai",
   "name": "enum",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "private": false,
   "main": "index.js",
   "engines": {
@@ -35,7 +35,7 @@
       "url": "https://raw.github.com/adrai/enum/master/licence"
     }
   ],
-  "scripts" : { 
+  "scripts" : {
     "test" : "mocha"
-  } 
+  }
 }

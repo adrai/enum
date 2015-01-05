@@ -1,7 +1,7 @@
 {
   "name": "enum",
-  "version": "0.2.6",
-  "main": "enum-0.2.6.js",
+  "version": "0.2.7",
+  "main": "enum-0.2.7.js",
   "ignore": [
     "test",
     "/lodash.js",
