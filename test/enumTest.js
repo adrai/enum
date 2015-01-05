@@ -334,14 +334,12 @@ describe('Enum', function() {
 
         it('can not extend after creation, and remains persistent', function(){
       
-          expect(myEnum).not.to.have.property('D', 8);
           myEnum.D = 8;
-          expect(myEnum.D).to.be(undefined);
-          expect(myEnum.D.value).to.be(undefined); 
-          expect(myEnum.get('D')).to.be(undefined);
           expect(function(){
             Object.defineProperty(myEnum, 'D', {value: 8});
           }).to.throwError();
+          expect(myEnum.D).to.be(undefined);
+          expect(myEnum).not.to.have.property('D', 8);
           expect(myEnum).to.equal(myEnum);
          });
 
@@ -373,7 +371,6 @@ describe('Enum', function() {
           before(function(){
             deleteEnumItem = delete myEnum['A'];
           });
-          expect(myEnum).to.have.property('A', 1);
           expect(deleteEnumItem).to.be(false);
           expect(myEnum.get('A')).to.be(1);
           expect(myEnum).to.equal(myEnum); 
