@@ -334,7 +334,6 @@ describe('Enum', function() {
 
         it('can not extend after creation, and remains persistent', function(){
       
-          myEnum.D = 8;
           expect(function(){
             Object.defineProperty(myEnum, 'D', {value: 8});
           }).to.throwError();
@@ -350,7 +349,7 @@ describe('Enum', function() {
             myEnum['C'] = 3;
           }).to.throwError("The value can not be set; Enum Type is not extensible.");
           expect(function(){
-            Object.defineProperty(myEnum, 'C', {value: 3});
+            Object.defineProperty(myEnum, 'C', {value: 3, writable:true, configurable: true});
           }).to.throwError();
           expect(myEnum).to.equal(myEnum);
         });
@@ -367,11 +366,9 @@ describe('Enum', function() {
 
         it('is persistent to deletes', function(){
 
-          var deleteEnumItem;
-          before(function(){
-            deleteEnumItem = delete myEnum['A'];
-          });
-          expect(deleteEnumItem).to.be(false);
+          expect(function(){
+            return delete myEnum['A'];
+          }).to.be(false);
           expect(myEnum.get('A')).to.be(1);
           expect(myEnum).to.equal(myEnum); 
         });
