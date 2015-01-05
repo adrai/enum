@@ -324,6 +324,78 @@ describe('Enum', function() {
       });
 
     });
+      
+      describe('on an enum object', function(){
+
+        var myEnum;
+        before(function(){
+        myEnum = new e{'A':1, 'B':2, 'C':4}; 
+        });
+
+        it('can not extend after creation, and remains persistent', function(){
+      
+          expect(myEnum).not.to.have.property('D', 8);
+          myEnum.D = 8;
+          expect(myEnum.D).to.be(undefined);
+          expect(myEnum.D.value).to.be(undefined); 
+          expect(myEnum.get('D')).to.be(undefined);
+          expect(function(){
+            Object.defineProperty(myEnum, 'D', {value: 8});
+          }).to.throwError();
+          expect(myEnum).to.equal(myEnum);
+         });
+
+        it('does not accept changes to property values, throws', function(){
+
+          expect(myEnum).to.have.property('C');
+          expect(function(){
+            myEnum['C'] = 3;
+          }).to.throwError("The value can not be set; Enum Type is not extensible.");
+          expect(function(){
+            Object.defineProperty(myEnum, 'C', {value: 3});
+          }).to.throwError();
+          expect(myEnum).to.equal(myEnum);
+        });
+
+        it('can not define new properties, throws', function(){
+
+           expect(function(){
+            Object.defineProperty(myEnum, 'D', {writable: true, enumerable:true});
+          }).to.throwError();
+           expect(myEnum.D).to.be(undefined); 
+           expect(myEnum).not.to.have.property('D');
+           expect(myEnum).to.equal(myEnum); 
+        });
+
+        it('is persistent to deletes', function(){
+
+          var deleteEnumItem;
+          before(function(){
+            deleteEnumItem = delete myEnum['A'];
+          });
+          expect(myEnum).to.have.property('A', 1);
+          expect(deleteEnumItem).to.be(false);
+          expect(myEnum.get('A')).to.be.(1);
+          expect(myEnum).to.equal(myEnum); 
+        });
+
+        it('creates unique identity for each property', function(){
+
+          var myEnum1 = new e{'A':1, 'B':2, 'C':4};
+          var myEnum2 = new e{'A':1, 'B':2, 'C':4};
+          expect(myEnum1.A).not.to.equal(myEnum2.A);
+          expect(myEnum1.B).not.to.equal(myEnum2.B);
+          expect(myEnum1.C).not.to.equal(myEnum2.C);
+          expect(myEnum1).not.to.equal(myEnum2);
+        });
+
+        it('respects the order of properties for equality', function(){
+          var m1 = Object.keys(myEnum);
+          var m2 = Object.keys(myEnum).reverse();
+          expect(m1).not.to.equal(m2);
+        });
+
+     }); 
 
     describe('beeing flagged', function() {
 
