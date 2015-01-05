@@ -375,7 +375,7 @@ describe('Enum', function() {
           });
           expect(myEnum).to.have.property('A', 1);
           expect(deleteEnumItem).to.be(false);
-          expect(myEnum.get('A')).to.be.(1);
+          expect(myEnum.get('A')).to.be(1);
           expect(myEnum).to.equal(myEnum); 
         });
 
