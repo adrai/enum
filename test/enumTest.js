@@ -147,8 +147,8 @@ describe('Enum', function() {
 
             it('with ==', function() {
 
-              expect(myEnum.A == 'A').to.be.ok();
-              expect(myEnum.C == 'C').to.be.ok();
+              expect(myEnum.A == myEnum.A.value).to.be.ok();
+              expect(myEnum.C == myEnum.C.value).to.be.ok();
 
             });
 
@@ -309,9 +309,19 @@ describe('Enum', function() {
 
         });
 
-        it('call valueOf and get the key', function() {
+        it('call valueOf and get the value', function() {
 
-          expect(myEnum.A.valueOf()).to.eql('A');
+          expect(myEnum.A.valueOf()).to.eql(myEnum.A.value);
+
+        });
+
+        it('use JavaScript | operator', function() {
+
+          expect(myEnum.A | myEnum.B).to.eql(myEnum.getValue('A | B'));
+
+          expect(myEnum.A | myEnum.C).to.eql(myEnum.getValue('A | C'));
+
+          expect(myEnum.A | myEnum.B | myEnum.C).to.eql(myEnum.getValue('A | B | C'));
 
         });
 
