@@ -13,14 +13,14 @@ Releases for a browser are available for download from GitHub.
 
 | **Version** | **Description** | **Size** |
 |:------------|:----------------|:---------|
-| `enum-0.2.7.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/enum-0.2.7.js) |
-| `enum-0.2.7.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/enum-0.2.7.min.js) |
+| `enum-1.0.0.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/enum-1.0.0.js) |
+| `enum-1.0.0.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/enum-1.0.0.min.js) |
 
 # Installation (node.js)
 
     $ npm install enum
 
-# Installation (browser, library is AMD compatible)
+# Installation (browser)
 
     <script src="enum.js"></script>
 
@@ -59,6 +59,10 @@ var myEnum = new Enum(['A', 'B', 'C'], { separator: ' | ' });
 
 // if you want your enum to have a name define it in the options
 var myEnum = new Enum(['A', 'B', 'C'], { name: 'MyEnum' });
+
+// if you want your enum to have an explicit "endianness", define it in the options
+// (defaults to `os.endianness()`)
+var myEnum = new Enum(['A', 'B', 'C'], { endianness: 'BE' });
 
 // or
 var myEnum = new Enum(['A', 'B', 'C'], 'MyEnum');
@@ -134,11 +138,11 @@ myItem.has(1)
 
 
 // other functions
-myItem.toString() // returns A | C
-myItem.toJSON() // returns A | C
-myItem.valueOf() // returns A | C
+myItem.toString() // returns 'A | C'
+myItem.toJSON() // returns '"A | C"'
+myItem.valueOf() // returns 3
 
-JSON.stringify(myItem) // returns A | C
+JSON.stringify(myItem) // returns '"A | C"'
 
 //Type Safety:
 //Newly created enumerable objects are Type-Safe in a way that it's non-configurable and no longer extensible.
