@@ -1,4 +1,5 @@
 var expect = expect || require('expect.js'),
+    endianness = require('os').endianness(),
     e = this.Enum || require('../index');
 
 describe('Enum', function() {
@@ -471,6 +472,48 @@ describe('Enum', function() {
         var myEnum2 = new e({'A': 1, 'B': 2, 'C': 4});
 
         expect(myEnum2.get(myEnum1.A)).to.eql(null);
+
+      });
+
+    });
+
+    describe('ref Type interface', function () {
+
+      it('should define a `size` Number', function () {
+
+        var myEnum = new e(['A', 'B', 'C']);
+
+        expect(myEnum.size).to.be.a('number');
+
+      });
+
+      it('should define an `indirection` Number', function () {
+
+        var myEnum = new e(['A', 'B', 'C']);
+
+        expect(myEnum.indirection).to.be.a('number');
+
+      });
+
+      it('should work with Buffer for `get()`', function () {
+
+        var myEnum = new e(['A', 'B', 'C']);
+        var buffer = new Buffer(myEnum.size);
+
+        buffer['writeUInt32' + endianness](myEnum.B.value, 0);
+
+        expect(myEnum.get(buffer)).to.eql(myEnum.B);
+
+      });
+
+      it('should work with Buffer for `set()`', function () {
+
+        var myEnum = new e(['A', 'B', 'C']);
+        var buffer = new Buffer(myEnum.size);
+
+        myEnum.set(buffer, 0, myEnum.B);
+
+        expect(buffer['readUInt32' + endianness](0)).to.eql(myEnum.B.value);
 
       });
 
