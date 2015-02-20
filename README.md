@@ -60,6 +60,10 @@ var myEnum = new Enum(['A', 'B', 'C'], { separator: ' | ' });
 // if you want your enum to have a name define it in the options
 var myEnum = new Enum(['A', 'B', 'C'], { name: 'MyEnum' });
 
+// if you want your enum to have an explicit "endianness", define it in the options
+// (defaults to `os.endianness()`)
+var myEnum = new Enum(['A', 'B', 'C'], { endianness: 'BE' });
+
 // or
 var myEnum = new Enum(['A', 'B', 'C'], 'MyEnum');
 
