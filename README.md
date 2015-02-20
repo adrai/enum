@@ -134,11 +134,11 @@ myItem.has(1)
 
 
 // other functions
-myItem.toString() // returns A | C
-myItem.toJSON() // returns A | C
-myItem.valueOf() // returns A | C
+myItem.toString() // returns 'A | C'
+myItem.toJSON() // returns '"A | C"'
+myItem.valueOf() // returns 3
 
-JSON.stringify(myItem) // returns A | C
+JSON.stringify(myItem) // returns '"A | C"'
 
 //Type Safety:
 //Newly created enumerable objects are Type-Safe in a way that it's non-configurable and no longer extensible.
