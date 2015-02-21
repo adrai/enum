@@ -5,6 +5,8 @@
 
 Enum is a javascript module that introduces the Enum Type. It works for node.js and in the browser.
 
+...and [ref](https://github.com/TooTallNate/ref) compatible [Known Types](https://github.com/TooTallNate/ref/wiki/Known-%22types%22)
+
 # Dependencies
 No dependencies!
 
