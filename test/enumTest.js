@@ -529,6 +529,28 @@ describe('Enum', function() {
 
     });
 
+    describe('beeing not case sensitive', function() {
+
+      var myEnum = new e(['One', 'tWo', 'ThrEE'], { ignoreCase: true });
+
+      it('it should work correctly even if not requesting exactly the same key value', function() {
+
+        expect(myEnum.get('one').value).to.eql(myEnum.One.value);
+        expect(myEnum.get('two').value).to.eql(myEnum.tWo.value);
+        expect(myEnum.get('THREE').value).to.eql(myEnum.ThrEE.value);
+
+        expect(myEnum.One.is('onE')).to.eql(true);
+        expect(myEnum.tWo.is('Two')).to.eql(true);
+        expect(myEnum.ThrEE.is('three')).to.eql(true);
+
+        expect(myEnum.One.has('onE')).to.eql(true);
+        expect(myEnum.tWo.has('Two')).to.eql(true);
+        expect(myEnum.ThrEE.has('three')).to.eql(true);
+
+      });
+
+    });
+
   });
 
 });

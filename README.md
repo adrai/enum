@@ -15,8 +15,8 @@ Releases for a browser are available for download from GitHub.
 
 | **Version** | **Description** | **Size** |
 |:------------|:----------------|:---------|
-| `enum-1.0.0.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/enum-1.0.0.js) |
-| `enum-1.0.0.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/enum-1.0.0.min.js) |
+| `enum-1.1.0.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/enum-1.1.0.js) |
+| `enum-1.1.0.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/enum-1.1.0.min.js) |
 
 # Installation (node.js)
 
@@ -62,12 +62,19 @@ var myEnum = new Enum(['A', 'B', 'C'], { separator: ' | ' });
 // if you want your enum to have a name define it in the options
 var myEnum = new Enum(['A', 'B', 'C'], { name: 'MyEnum' });
 
+// or
+var myEnum = new Enum(['A', 'B', 'C'], 'MyEnum');
+
 // if you want your enum to have an explicit "endianness", define it in the options
 // (defaults to `os.endianness()`)
 var myEnum = new Enum(['A', 'B', 'C'], { endianness: 'BE' });
 
-// or
-var myEnum = new Enum(['A', 'B', 'C'], 'MyEnum');
+// if you want your enum to be not case sensitive
+// (defaults to `false`)
+var myEnum = new Enum(['One', 'tWo', 'ThrEE'], { ignoreCase: true });
+myEnum.get('one'); // => myEnum.One
+myEnum.get('TWO'); // => myEnum.tWo
+myEnum.ThrEE.is('three'); // => true
 
 //define enum type without flag
 var myEnum = new Enum({'None': 0, 'Black':1, 'Red': 2, 'Red2': 3, 'Green': 4, 'Blue': 5});

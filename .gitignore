@@ -3,6 +3,7 @@ $ cat .gitignore
 # Can ignore specific files
 .settings.xml
 .monitor
+.idea
 
 # Use wildcards as well
 *~
