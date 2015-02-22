@@ -1,1 +1,1 @@
-module.exports = require('./lib/enum');
+module.exports = require('./dist/enum');
