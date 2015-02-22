@@ -8,6 +8,7 @@ var version = require('./package.json').version;
 gulp.task('build', function() {
   gulp.src('lib/enum.js')
     .pipe(browserify({
+      standalone: 'Enum',
       insertGlobals : true,
       debug : !gulp.env.production
     }))
