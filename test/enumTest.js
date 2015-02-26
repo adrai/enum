@@ -305,6 +305,21 @@ describe('Enum', function() {
 
           });
 
+          describe('undefined', function() {
+
+            it('for null', function() {
+              expect(myEnum.getKey(null)).to.be(undefined);
+            });
+
+            it('for undefined', function() {
+              expect(myEnum.getKey(undefined)).to.be(undefined);
+            });
+
+            it('for invalid key/value', function() {
+              expect(myEnum.getKey('X')).to.be(undefined);
+            });
+
+          });
         });
 
       });
