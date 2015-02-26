@@ -435,9 +435,9 @@ describe('Enum', function() {
 
       it('it should not get the flagged value', function() {
 
-        expect(myNonFlaggedEnum.get(1).is(myNonFlaggedEnum.A));
-        expect(myNonFlaggedEnum.get(2).is(myNonFlaggedEnum.B));
-        expect(myNonFlaggedEnum.get(3).is(myNonFlaggedEnum.B2));
+        expect(myNonFlaggedEnum.get(1)).to.be(myNonFlaggedEnum.A);
+        expect(myNonFlaggedEnum.get(2)).to.be(myNonFlaggedEnum.B);
+        expect(myNonFlaggedEnum.get(3)).to.be(myNonFlaggedEnum.B2);
 
       });
 
