@@ -216,27 +216,24 @@ describe('Enum', function() {
 
           });
 
-        });
+          describe('undefined', function() {
 
-        describe('call get with null and get', function() {
+            it('for null', function() {
+              expect(myEnum.get(null)).to.be(undefined);
+            });
 
-          it('null', function() {
+            it('for undefined', function() {
+              expect(myEnum.get(undefined)).to.be(undefined);
+            });
 
-            expect(myEnum.get(null)).to.eql(null);
-
-          });
-
-        });
-
-        describe('call get with undefined and get', function() {
-
-          it('null', function() {
-
-            expect(myEnum.get(undefined)).to.eql(null);
+            it('for invalid key/value', function() {
+              expect(myEnum.get('X')).to.be(undefined);
+            });
 
           });
 
         });
+
 
         describe('call getValue and get', function() {
 
@@ -446,26 +443,6 @@ describe('Enum', function() {
         it('it should return undefined', function() {
 
           expect(myNonFlaggedEnum.get(5)).to.not.be.ok();
-
-        });
-
-      });
-
-      describe('call get with an non valid value and get', function() {
-
-        it('null', function() {
-
-          expect(myNonFlaggedEnum.get(12345)).to.eql(null);
-
-        });
-
-      });
-
-      describe('call get with 0 and get', function() {
-
-        it('null', function() {
-
-          expect(myNonFlaggedEnum.get(0)).to.not.eql(null);
 
         });
 
