@@ -473,7 +473,7 @@ describe('Enum', function() {
 
         it('it should return undefined', function() {
 
-          expect(myNonFlaggedEnum.get(5)).to.not.be.ok();
+          expect(myNonFlaggedEnum.get(5)).to.be(undefined);
 
         });
 
