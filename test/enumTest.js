@@ -242,25 +242,25 @@ describe('Enum', function() {
 
           it('an enum value by item', function() {
 
-            expect(myEnum.getValue(myEnum.A)).to.eql(1);
+            expect(myEnum.getValue(myEnum.A)).to.be(1);
 
-            expect(myEnum.getValue(myEnum.C)).to.eql(4);
+            expect(myEnum.getValue(myEnum.C)).to.be(4);
 
           });
 
           it('an enum value by key', function() {
 
-            expect(myEnum.getValue('A')).to.eql(1);
+            expect(myEnum.getValue('A')).to.be(1);
 
-            expect(myEnum.getValue('C')).to.eql(4);
+            expect(myEnum.getValue('C')).to.be(4);
 
           });
 
           it('an enum value by value', function() {
 
-            expect(myEnum.getValue(1)).to.eql(1);
+            expect(myEnum.getValue(1)).to.be(1);
 
-            expect(myEnum.getValue(4)).to.eql(4);
+            expect(myEnum.getValue(4)).to.be(4);
 
           });
 
@@ -270,25 +270,25 @@ describe('Enum', function() {
 
           it('an enum key by item', function() {
 
-            expect(myEnum.getKey(myEnum.A)).to.eql('A');
+            expect(myEnum.getKey(myEnum.A)).to.be('A');
 
-            expect(myEnum.getKey(myEnum.C)).to.eql('C');
+            expect(myEnum.getKey(myEnum.C)).to.be('C');
 
           });
 
           it('an enum value by key', function() {
 
-            expect(myEnum.getKey('A')).to.eql('A');
+            expect(myEnum.getKey('A')).to.be('A');
 
-            expect(myEnum.getKey('C')).to.eql('C');
+            expect(myEnum.getKey('C')).to.be('C');
 
           });
 
           it('an enum value by value', function() {
 
-            expect(myEnum.getKey(1)).to.eql('A');
+            expect(myEnum.getKey(1)).to.be('A');
 
-            expect(myEnum.getKey(4)).to.eql('C');
+            expect(myEnum.getKey(4)).to.be('C');
 
           });
 
@@ -300,35 +300,35 @@ describe('Enum', function() {
 
         it('call toString and get the key', function() {
 
-          expect(myEnum.A.toString()).to.eql('A');
+          expect(myEnum.A.toString()).to.be('A');
 
         });
 
         it('call toJSON and get the key', function() {
 
-          expect(myEnum.A.toJSON()).to.eql('A');
+          expect(myEnum.A.toJSON()).to.be('A');
 
         });
 
         it('call valueOf and get the value', function() {
 
-          expect(myEnum.A.valueOf()).to.eql(myEnum.A.value);
+          expect(myEnum.A.valueOf()).to.be(myEnum.A.value);
 
         });
 
         it('use JavaScript | operator', function() {
 
-          expect(myEnum.A | myEnum.B).to.eql(myEnum.getValue('A | B'));
+          expect(myEnum.A | myEnum.B).to.be(myEnum.getValue('A | B'));
 
-          expect(myEnum.A | myEnum.C).to.eql(myEnum.getValue('A | C'));
+          expect(myEnum.A | myEnum.C).to.be(myEnum.getValue('A | C'));
 
-          expect(myEnum.A | myEnum.B | myEnum.C).to.eql(myEnum.getValue('A | B | C'));
+          expect(myEnum.A | myEnum.B | myEnum.C).to.be(myEnum.getValue('A | B | C'));
 
         });
 
         it('stringify JSON', function() {
 
-          expect(JSON.stringify(myEnum.A)).to.eql('"A"');
+          expect(JSON.stringify(myEnum.A)).to.be('"A"');
 
         });
 
@@ -361,7 +361,7 @@ describe('Enum', function() {
           Object.defineProperty(myEnum, 'C', {value: 3, writable:true, configurable: true});
         }).to.throwError();
         expect(myEnum.get('C')).to.have.property('value', 4);
-        expect(myEnum).to.equal(myEnum);
+        expect(myEnum).to.be(myEnum);
 
       });
 
@@ -372,7 +372,7 @@ describe('Enum', function() {
         }).to.throwError();
         expect(myEnum.D).to.be(undefined);
         expect(myEnum).not.to.have.property('D');
-        expect(myEnum).to.equal(myEnum);
+        expect(myEnum).to.be(myEnum);
 
       });
 
@@ -382,7 +382,7 @@ describe('Enum', function() {
         expect(deleteEnumItem).to.be(false);
         expect(myEnum).to.have.property('A');
         expect(myEnum.get('A')).to.have.property('value', 1);
-        expect(myEnum).to.equal(myEnum);
+        expect(myEnum).to.be(myEnum);
 
       });
 
@@ -512,7 +512,7 @@ describe('Enum', function() {
 
         buffer['writeUInt32' + endianness](myEnum.B.value, 0);
 
-        expect(myEnum.get(buffer)).to.eql(myEnum.B);
+        expect(myEnum.get(buffer)).to.be(myEnum.B);
 
       });
 
@@ -523,7 +523,7 @@ describe('Enum', function() {
 
         myEnum.set(buffer, 0, myEnum.B);
 
-        expect(buffer['readUInt32' + endianness](0)).to.eql(myEnum.B.value);
+        expect(buffer['readUInt32' + endianness](0)).to.be(myEnum.B.value);
 
       });
 
@@ -535,17 +535,17 @@ describe('Enum', function() {
 
       it('it should work correctly even if not requesting exactly the same key value', function() {
 
-        expect(myEnum.get('one').value).to.eql(myEnum.One.value);
-        expect(myEnum.get('two').value).to.eql(myEnum.tWo.value);
-        expect(myEnum.get('THREE').value).to.eql(myEnum.ThrEE.value);
+        expect(myEnum.get('one').value).to.be(myEnum.One.value);
+        expect(myEnum.get('two').value).to.be(myEnum.tWo.value);
+        expect(myEnum.get('THREE').value).to.be(myEnum.ThrEE.value);
 
-        expect(myEnum.One.is('onE')).to.eql(true);
-        expect(myEnum.tWo.is('Two')).to.eql(true);
-        expect(myEnum.ThrEE.is('three')).to.eql(true);
+        expect(myEnum.One.is('onE')).to.be(true);
+        expect(myEnum.tWo.is('Two')).to.be(true);
+        expect(myEnum.ThrEE.is('three')).to.be(true);
 
-        expect(myEnum.One.has('onE')).to.eql(true);
-        expect(myEnum.tWo.has('Two')).to.eql(true);
-        expect(myEnum.ThrEE.has('three')).to.eql(true);
+        expect(myEnum.One.has('onE')).to.be(true);
+        expect(myEnum.tWo.has('Two')).to.be(true);
+        expect(myEnum.ThrEE.has('three')).to.be(true);
 
       });
 
