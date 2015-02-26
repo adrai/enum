@@ -415,11 +415,11 @@ describe('Enum', function() {
         myFlaggedEnum = new e({'A': 1, 'B': 2, 'C': 4});
       });
 
-      it('it should not get the flagged value', function() {
+      it('it should get the flagged value', function() {
 
-        expect(myFlaggedEnum.get(1).is(myFlaggedEnum.A));
-        expect(myFlaggedEnum.get(2).is(myFlaggedEnum.B));
-        expect(myFlaggedEnum.get(3).is('B | B2'));
+        expect(myFlaggedEnum.get(1)).to.be(myFlaggedEnum.A);
+        expect(myFlaggedEnum.get(2)).to.be(myFlaggedEnum.B);
+        expect(myFlaggedEnum.get(3).is('A | B')).to.be(true);
 
       });
 
