@@ -73,22 +73,22 @@ describe('Enum', function() {
 
             it('with another item', function() {
 
-              expect(myItem.has(myEnum.B)).to.be.ok();
-              expect(myItem.has(myEnum.C)).not.to.be.ok();
+              expect(myItem.has(myEnum.B)).to.be(true);
+              expect(myItem.has(myEnum.C)).not.to.be(true);
 
             });
 
             it('with another key', function() {
 
-              expect(myItem.has('B')).to.be.ok();
-              expect(myItem.has('C')).not.to.be.ok();
+              expect(myItem.has('B')).to.be(true);
+              expect(myItem.has('C')).not.to.be(true);
 
             });
 
             it('with another value', function() {
 
-              expect(myItem.has(2)).to.be.ok();
-              expect(myItem.has(4)).not.to.be.ok();
+              expect(myItem.has(2)).to.be(true);
+              expect(myItem.has(4)).not.to.be(true);
 
             });
 
@@ -102,29 +102,29 @@ describe('Enum', function() {
 
             it('with is', function() {
 
-              expect(myEnum.A.is(myEnum.A)).to.be.ok();
-              expect(myEnum.C.is(myEnum.C)).to.be.ok();
+              expect(myEnum.A.is(myEnum.A)).to.be(true);
+              expect(myEnum.A.is(myEnum.C)).not.to.be(true);
 
             });
 
             it('with has', function() {
 
-              expect(myEnum.A.has(myEnum.A)).to.be.ok();
-              expect(myEnum.C.has(myEnum.C)).to.be.ok();
+              expect(myEnum.A.has(myEnum.A)).to.be(true);
+              expect(myEnum.A.has(myEnum.C)).not.to.be(true);
 
             });
 
             it('with ==', function() {
 
-              expect(myEnum.A == myEnum.A).to.be.ok();
-              expect(myEnum.C == myEnum.C).to.be.ok();
+              expect(myEnum.A == myEnum.A).to.be(true);
+              expect(myEnum.A == myEnum.C).not.to.be(true);
 
             });
 
             it('with ===', function() {
 
-              expect(myEnum.A === myEnum.A).to.be.ok();
-              expect(myEnum.C === myEnum.C).to.be.ok();
+              expect(myEnum.A === myEnum.A).to.be(true);
+              expect(myEnum.A === myEnum.C).not.to.be(true);
 
             });
 
@@ -134,22 +134,22 @@ describe('Enum', function() {
 
             it('with is', function() {
 
-              expect(myEnum.A.is('A')).to.be.ok();
-              expect(myEnum.C.is('C')).to.be.ok();
+              expect(myEnum.A.is('A')).to.be(true);
+              expect(myEnum.A.is('C')).not.to.be(true);
 
             });
 
             it('with has', function() {
 
-              expect(myEnum.A.has('A')).to.be.ok();
-              expect(myEnum.C.has('C')).to.be.ok();
+              expect(myEnum.A.has('A')).to.be(true);
+              expect(myEnum.A.has('C')).not.to.be(true);
 
             });
 
             it('with ==', function() {
 
-              expect(myEnum.A == myEnum.A.value).to.be.ok();
-              expect(myEnum.C == myEnum.C.value).to.be.ok();
+              expect(myEnum.A == myEnum.A.value).to.be(true);
+              expect(myEnum.A == myEnum.C.value).not.to.be(true);
 
             });
 
@@ -159,15 +159,15 @@ describe('Enum', function() {
 
             it('with is', function() {
 
-              expect(myEnum.A.is(1)).to.be.ok();
-              expect(myEnum.C.is(4)).to.be.ok();
+              expect(myEnum.A.is(1)).to.be(true);
+              expect(myEnum.A.is(4)).not.to.be(true);
 
             });
 
             it('with has', function() {
 
-              expect(myEnum.A.has(1)).to.be.ok();
-              expect(myEnum.C.has(4)).to.be.ok();
+              expect(myEnum.A.has(1)).to.be(true);
+              expect(myEnum.A.has(4)).not.to.be(true);
 
             });
 
