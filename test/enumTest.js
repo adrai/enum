@@ -24,7 +24,7 @@ describe('Enum', function() {
 
     describe('in a simple or complex way', function() {
 
-      it('it should be tha same', function() {
+      it('it should be the same', function() {
 
         myEnum = new e(['A', 'B', 'C']);
 
@@ -407,7 +407,7 @@ describe('Enum', function() {
 
     });
 
-    describe('beeing flagged', function() {
+    describe('being flagged', function() {
 
       var myFlaggedEnum;
 
@@ -425,7 +425,7 @@ describe('Enum', function() {
 
     });
 
-    describe('not beeing flagged', function() {
+    describe('not being flagged', function() {
 
       var myNonFlaggedEnum;
 
@@ -473,7 +473,7 @@ describe('Enum', function() {
 
     });
 
-    describe('and getting an item of it from an other enum', function () {
+    describe('and getting an item of it from another enum', function () {
 
       it('it should return null', function() {
 
@@ -529,7 +529,7 @@ describe('Enum', function() {
 
     });
 
-    describe('beeing not case sensitive', function() {
+    describe('being not case sensitive', function() {
 
       var myEnum = new e(['One', 'tWo', 'ThrEE'], { ignoreCase: true });
 
