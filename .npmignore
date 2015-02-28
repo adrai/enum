@@ -1,0 +1,6 @@
+/.*
+/gulpfile.js
+/enum-*.js
+/test
+/lib
+!/dist
