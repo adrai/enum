@@ -1,6 +1,6 @@
 var expect = expect || require('expect.js'),
     endianness = this.Enum ? 'LE' : require('os').endianness(),
-    e = this.Enum || require('../index');
+    e = this.Enum || require('../lib/enum');
 
 describe('Enum', function() {
 
