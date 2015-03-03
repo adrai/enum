@@ -2,6 +2,14 @@ var expect = expect || require('expect.js'),
     endianness = this.Enum ? 'LE' : require('os').endianness(),
     e = this.Enum || require('../lib/enum');
 
+function envSupportsFreezing() {
+  return (
+    Object.isFrozen && Object.isSealed &&
+    Object.getOwnPropertyNames && Object.getOwnPropertyDescriptor &&
+    Object.defineProperties && Object.__defineGetter__ && Object.__defineSetter__
+  );
+}
+
 describe('Enum', function() {
 
   if (typeof(module) !== 'undefined' && module.exports) {
@@ -372,47 +380,50 @@ describe('Enum', function() {
         myEnum = new e({'A':1, 'B':2, 'C':4});
       });
 
-      it('can not extend after creation', function() {
+      if (envSupportsFreezing()) {
 
-        var extendMyEnum = Object.isExtensible(myEnum);
-        expect(extendMyEnum).to.be(false);
+        it('can not extend after creation', function() {
 
-       });
+          var extendMyEnum = Object.isExtensible(myEnum);
+          expect(extendMyEnum).to.be(false);
 
-      it('does not accept changes to existing property values, throws', function() {
+        });
 
-        expect(myEnum).to.have.property('C');
-        expect(function() {
-          myEnum['C'] = 3;
-        }).to.throwError("The value can not be set; Enum Type is not extensible.");
-        expect(function() {
-          Object.defineProperty(myEnum, 'C', {value: 3, writable:true, configurable: true});
-        }).to.throwError();
-        expect(myEnum.get('C')).to.have.property('value', 4);
-        expect(myEnum).to.be(myEnum);
+        it('does not accept changes to existing property values, throws', function() {
 
-      });
+          expect(myEnum).to.have.property('C');
+          expect(function() {
+            myEnum['C'] = 3;
+          }).to.throwError("The value can not be set; Enum Type is not extensible.");
+          expect(function() {
+            Object.defineProperty(myEnum, 'C', {value: 3, writable:true, configurable: true});
+          }).to.throwError();
+          expect(myEnum.get('C')).to.have.property('value', 4);
+          expect(myEnum).to.be(myEnum);
 
-      it('can not define new properties, throws', function() {
+        });
 
-        expect(function() {
-          Object.defineProperty(myEnum, 'D', {writable: true, enumerable:true});
-        }).to.throwError();
-        expect(myEnum.D).to.be(undefined);
-        expect(myEnum).not.to.have.property('D');
-        expect(myEnum).to.be(myEnum);
+        it('can not define new properties, throws', function() {
 
-      });
+          expect(function() {
+            Object.defineProperty(myEnum, 'D', {writable: true, enumerable:true});
+          }).to.throwError();
+          expect(myEnum.D).to.be(undefined);
+          expect(myEnum).not.to.have.property('D');
+          expect(myEnum).to.be(myEnum);
 
-      it('is persistent to deletes', function() {
+        });
 
-        var deleteEnumItem = delete myEnum['A'];
-        expect(deleteEnumItem).to.be(false);
-        expect(myEnum).to.have.property('A');
-        expect(myEnum.get('A')).to.have.property('value', 1);
-        expect(myEnum).to.be(myEnum);
+        it('is persistent to deletes', function() {
 
-      });
+          var deleteEnumItem = delete myEnum['A'];
+          expect(deleteEnumItem).to.be(false);
+          expect(myEnum).to.have.property('A');
+          expect(myEnum.get('A')).to.have.property('value', 1);
+          expect(myEnum).to.be(myEnum);
+
+        });
+      }
 
       it('creates unique identity for each property', function() {
 

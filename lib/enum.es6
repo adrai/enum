@@ -198,6 +198,14 @@ export default class Enum {
    * make enumerable items nonconfigurable and deep freeze the properties. Throw Error on property setter.
    */
   freezeEnums() {
+    function envSupportsFreezing() {
+      return (
+        Object.isFrozen && Object.isSealed &&
+        Object.getOwnPropertyNames && Object.getOwnPropertyDescriptor &&
+        Object.defineProperties && Object.__defineGetter__ && Object.__defineSetter__
+      );
+    }
+
     function freezer(o) {
       var props = Object.getOwnPropertyNames(o);
       props.forEach(function (p) {
@@ -234,7 +242,9 @@ export default class Enum {
       }
     }
 
-    deepFreezeEnums(this);
+    if (envSupportsFreezing() ) {
+      deepFreezeEnums(this);
+    }
 
     return this;
   }
