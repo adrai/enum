@@ -5,6 +5,7 @@ var mocha = require('gulp-mocha');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var rimraf = require('gulp-rimraf');
+var shell = require('gulp-shell');
 
 var version = require('./package.json').version;
 
@@ -31,6 +32,12 @@ gulp.task('test', ['es6-test'], function() {
         .pipe(rimraf());
     });
 });
+
+gulp.task('zuul', shell.task([
+  'zuul -- test/enumTest.js'
+]));
+
+gulp.task('test-ci', ['test', 'zuul']);
 
 gulp.task('es6-build', function() {
   return compile()

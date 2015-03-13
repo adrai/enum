@@ -1,6 +1,8 @@
 var expect = expect || require('expect.js'),
     endianness = this.Enum ? 'LE' : require('os').endianness(),
-    e = this.Enum || require('../lib/enum');
+    e = this.Enum || require('../dist/enum');
+
+global.Enum = null;
 
 function envSupportsFreezing() {
   return (

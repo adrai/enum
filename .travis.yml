@@ -1,13 +1,15 @@
 language: node_js
 node_js:
-  - "0.10"
-  - "0.12"
-  - iojs
-
+- '0.10'
+- '0.12'
+- iojs
 branches:
   only:
-    - master
-
+  - master
 notifications:
   email:
-    - adriano@raiano.ch
+  - adriano@raiano.ch
+env:
+  global:
+  - secure: rKH7TYjITMgNERLddI2pWA6aOjtFU+V3/4GKzceDFRgNh6+93me/l380mhs+qE+sRHb+KzMRxIi6Fk9wNF59hvbdsivTomdUQNItVmiSYxkhJMoaaeNjyLH8AyZjmV1u6czNRKGblrFbLN2cWc1FFn4Yz96wLQlQqnruNP5PRzM=
+  - secure: h7T4blCnspXlXi19ssRPNUyOsolxd7Ukg/NkG07TPIUHYYanyjpvZLAWnAD3RvwV5za7Fh9fq1dB+N2MvDKfH8BGOTcI7yilGtNEUiMjGVTsZsrtnThD5RnzIv4LkIDzWcSYZdeVW0CArehIVnVqSMRHRnmKNb+oq/j4huM1Vgg=

@@ -19,8 +19,10 @@
     "gulp-mocha": "^2.0.0",
     "gulp-rename": "^1.2.0",
     "gulp-rimraf": "^0.1.1",
+    "gulp-shell": "^0.4.0",
     "gulp-uglify": "^1.1.0",
-    "mocha": ">= 1.0.1"
+    "mocha": ">= 1.0.1",
+    "zuul": ">= 1.0.1"
   },
   "description": "Enum is a javascript module that introduces the Enum Type. It works for node.js and in the browser.",
   "keywords": [
@@ -41,24 +43,24 @@
     }
   ],
   "scripts": {
-    "test": "gulp test",
+    "test": "gulp test-ci",
     "prepublish": "gulp"
   },
   "testling": {
     "browsers": [
-        "ie/6..latest",
-        "firefox/17..latest",
-        "firefox/nightly",
-        "chrome/22..latest",
-        "chrome/canary",
-        "opera/12..latest",
-        "opera/next",
-        "safari/5.1..latest",
-        "ipad/6.0..latest",
-        "iphone/6.0..latest",
-        "android-browser/4.2..latest"
+      "ie/6..latest",
+      "firefox/17..latest",
+      "firefox/nightly",
+      "chrome/22..latest",
+      "chrome/canary",
+      "opera/12..latest",
+      "opera/next",
+      "safari/5.1..latest",
+      "ipad/6.0..latest",
+      "iphone/6.0..latest",
+      "android-browser/4.2..latest"
     ],
-    "harness" : "mocha",
+    "harness": "mocha",
     "files": "test/*.js"
   }
 }
