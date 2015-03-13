@@ -12,7 +12,8 @@ var version = require('./package.json').version;
 function compile() {
   return gulp.src('lib/*.es6')
     .pipe(babel({
-      experimental: true
+      experimental: true,
+      loose: 'all'
     }))
     .pipe(rename({
       extname: '.js'

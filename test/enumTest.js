@@ -2,14 +2,16 @@ var expect = expect || require('expect.js'),
     endianness = this.Enum ? 'LE' : require('os').endianness(),
     e = this.Enum || require('../dist/enum');
 
-global.Enum = null;
-
 function envSupportsFreezing() {
   return (
     Object.isFrozen && Object.isSealed &&
     Object.getOwnPropertyNames && Object.getOwnPropertyDescriptor &&
     Object.defineProperties && Object.__defineGetter__ && Object.__defineSetter__
   );
+}
+
+if (typeof global != 'undefined') {
+  global.Enum = null;
 }
 
 describe('Enum', function() {
@@ -364,11 +366,15 @@ describe('Enum', function() {
 
         });
 
-        it('stringify JSON', function() {
+        if (typeof JSON != 'undefined') {
 
-          expect(JSON.stringify(myEnum.A)).to.be('"A"');
+          it('stringify JSON', function() {
 
-        });
+            expect(JSON.stringify(myEnum.A)).to.be('"A"');
+
+          });
+
+        }
 
       });
 
@@ -438,13 +444,17 @@ describe('Enum', function() {
 
       });
 
-      it('respects the order of properties for equality', function() {
+      if (Object.keys) {
 
-        var m1 = Object.keys(myEnum);
-        var m2 = Object.keys(myEnum).reverse();
-        expect(m1).not.to.equal(m2);
+        it('respects the order of properties for equality', function() {
 
-      });
+          var m1 = Object.keys(myEnum);
+          var m2 = Object.keys(myEnum).reverse();
+          expect(m1).not.to.equal(m2);
+
+        });
+
+      }
 
     });
 
