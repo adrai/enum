@@ -2,7 +2,9 @@
 
 [![travis](https://img.shields.io/travis/adrai/enum.svg)](https://travis-ci.org/adrai/enum) [![npm](https://img.shields.io/npm/v/enum.svg)](https://npmjs.org/package/enum)
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/adrai.svg)](https://saucelabs.com/u/adrai)
+<a href="https://saucelabs.com/u/adrai">
+  <img src="https://saucelabs.com/browser-matrix/adrai.svg" alt="Sauce Test Status"/>
+</a>
 
 <!---
 [![browser support](https://ci.testling.com/adrai/enum.png)](https://ci.testling.com/adrai/enum)
