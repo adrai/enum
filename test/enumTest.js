@@ -1,4 +1,4 @@
-var expect = expect || require('expect.js'),
+var expect = this.expect || require('expect.js'),
     endianness = this.Enum ? 'LE' : require('os').endianness(),
     e = this.Enum || require('../dist/enum');
 
