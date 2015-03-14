@@ -13,7 +13,7 @@ function compile() {
   return gulp.src('lib/*.es6')
     .pipe(babel({
       experimental: true,
-      loose: 'all'
+      loose: ['es6.modules']
     }))
     .pipe(rename({
       extname: '.js'
