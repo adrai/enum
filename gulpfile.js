@@ -13,7 +13,7 @@ function compile() {
   return gulp.src('lib/*.es6')
     .pipe(babel({
       experimental: true,
-      loose: 'all'
+      loose: ['es6.modules', 'es6.classes']
     }))
     .pipe(rename({
       extname: '.js'
@@ -35,7 +35,7 @@ gulp.task('test', ['es6-test'], function() {
 });
 
 gulp.task('zuul', shell.task([
-  'zuul -- test/enumTest.js'
+  '$(npm bin)/zuul -- test/enumTest.js'
 ]));
 
 gulp.task('test-ci', ['test', 'zuul']);
