@@ -13,19 +13,20 @@
 
   describe('Enum', function() {
 
-    if (typeof(module) !== 'undefined' && module.exports) {
-      describe('calling register', function() {
+    describe('calling register', function() {
+      before(function(){
+        Enum = undefined;
+      });
 
-        it('it should register Enum on global namespace', function() {
+      it('it should register Enum on global namespace', function() {
 
-          expect(global.Enum).not.to.be.ok();
-          e.register();
-          expect(Enum).to.be.ok();
-
-        });
+        expect(Enum).not.to.be.ok();
+        e.register();
+        expect(Enum).to.be.ok();
 
       });
-    }
+
+    });
 
     describe('defining an enum', function() {
 
