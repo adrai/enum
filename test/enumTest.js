@@ -3,6 +3,9 @@
   var endianness = global.Enum ? 'LE' : require('os').endianness();
   var e = global.Enum || require('../dist/enum');
 
+  // for zuul / saucelabs
+  Enum = undefined;
+
   function envSupportsFreezing() {
     return (
       Object.isFrozen && Object.isSealed &&
@@ -14,9 +17,6 @@
   describe('Enum', function() {
 
     describe('calling register', function() {
-      before(function(){
-        Enum = undefined;
-      });
 
       it('it should register Enum on global namespace', function() {
 
