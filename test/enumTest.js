@@ -437,14 +437,6 @@
 
         });
 
-        it('respects the order of properties for equality', function() {
-
-          var m1 = Object.keys(myEnum);
-          var m2 = Object.keys(myEnum).reverse();
-          expect(m1).not.to.equal(m2);
-
-        });
-
       });
 
       describe('being flagged', function() {
