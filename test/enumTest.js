@@ -6,8 +6,8 @@
   function envSupportsFreezing() {
     return (
       Object.isFrozen && Object.isSealed &&
-        Object.getOwnPropertyNames && Object.getOwnPropertyDescriptor &&
-        Object.defineProperties && Object.__defineGetter__ && Object.__defineSetter__
+      Object.getOwnPropertyNames && Object.getOwnPropertyDescriptor &&
+      Object.defineProperties && Object.__defineGetter__ && Object.__defineSetter__
     );
   }
 
