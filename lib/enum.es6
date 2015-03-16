@@ -44,9 +44,7 @@ export default class Enum {
     }
 
     for (var member in map) {
-      if (this._options.name && ['name', '_options', 'get', 'getKey', 'getValue', 'enums', 'isFlaggable'].includes(member)) {
-        throw new Error("Enum key \"" + member + "\" is a reserved word!");
-      }
+      guardReservedKeys(this._options.name, member);
       this[member] = new EnumItem(member, map[member], { ignoreCase: this._options.ignoreCase });
       this.enums.push(this[member]);
     }
@@ -260,4 +258,12 @@ export default class Enum {
   }
 };
 
+// private
 
+var reservedKeys = ['_options', 'get', 'getKey', 'getValue', 'enums', 'isFlaggable'];
+
+function guardReservedKeys(customName, key) {
+  if ((customName && key === 'name') || indexOf.call(reservedKeys, key) >= 0) {
+    throw new Error(`Enum key ${key} is a reserved word!`);
+  }
+}

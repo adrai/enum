@@ -564,6 +564,45 @@
 
       });
 
+      describe('with a reserved enumitem name', function() {
+        var reservedKeys = [ '_options', 'get', 'getKey', 'getValue', 'enums', 'isFlaggable' ];
+
+        it('throws an error', function() {
+          for (var k = 0; k < reservedKeys.length; k++) {
+
+            expect(function(){ new e([reservedKeys[k]]); }).to.throwError(new RegExp(reservedKeys[k]));
+
+          }
+        });
+
+        it('does not throw an error for `name`', function() {
+
+          expect(function(){ new e(['name']); }).not.to.throwError();
+
+        });
+
+      });
+
+      describe('with a custom name', function() {
+
+        it('can be given as second argument', function() {
+          var myEnum = new e(['oneFish', 'twoFish'], 'RedFish');
+
+          expect(myEnum.name).to.be('RedFish');
+        });
+
+        it('can be given as an option', function() {
+          var myEnum = new e(['oneFish', 'twoFish'], { name: 'BlueFish' });
+
+          expect(myEnum.name).to.be('BlueFish');
+        });
+
+        it('cannot accept an enumitem also named `name`', function() {
+          expect(function(){ new e(['name'], 'customName'); }).to.throwError(/name/);
+        });
+
+      });
+
     });
 
   });
