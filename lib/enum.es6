@@ -46,7 +46,7 @@ export default class Enum {
     }
 
     for (var member in map) {
-      if (indexOf.call(reservedKeys, member) >= 0) {
+      if ((this._options.name && member === 'name') || indexOf.call(reservedKeys, member) >= 0) {
         throw new Error("Enum key \"" + member + "\" is a reserved word!");
       }
       this[member] = new EnumItem(member, map[member], { ignoreCase: this._options.ignoreCase });

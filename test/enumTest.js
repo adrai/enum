@@ -597,6 +597,10 @@
           expect(myEnum.name).to.be('BlueFish');
         });
 
+        it('cannot accept an enumitem also named `name`', function() {
+          expect(function(){ new e(['name'], 'customName'); }).to.throwError(/name/);
+        });
+
       });
 
     });
