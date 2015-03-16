@@ -264,6 +264,6 @@ var reservedKeys = ['_options', 'get', 'getKey', 'getValue', 'enums', 'isFlaggab
 
 function guardReservedKeys(customName, key) {
   if ((customName && key === 'name') || indexOf.call(reservedKeys, key) >= 0) {
-    throw new Error("Enum key \"" + key + "\" is a reserved word!");
+    throw new Error(`Enum key ${key} is a reserved word!`);
   }
 }
