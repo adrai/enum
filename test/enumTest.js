@@ -575,6 +575,12 @@
           }
         });
 
+        it('does not throw an error for `name`', function() {
+
+          expect(function(){ new e(['name']); }).not.to.throwError();
+
+        });
+
       });
 
     });
