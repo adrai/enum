@@ -7,6 +7,8 @@ import { indexOf } from './indexOf';
 
 const endianness = os.endianness();
 
+var reservedKeys = ['_options', 'get', 'getKey', 'getValue', 'enums', 'isFlaggable'];
+
 /**
  * Represents an Enum with enum items.
  * @param {Array || Object}  map     This are the enum items.
@@ -44,7 +46,7 @@ export default class Enum {
     }
 
     for (var member in map) {
-      if (this._options.name && ['name', '_options', 'get', 'getKey', 'getValue', 'enums', 'isFlaggable'].includes(member)) {
+      if (indexOf.call(reservedKeys, member) >= 0) {
         throw new Error("Enum key \"" + member + "\" is a reserved word!");
       }
       this[member] = new EnumItem(member, map[member], { ignoreCase: this._options.ignoreCase });
@@ -259,5 +261,4 @@ export default class Enum {
     }
   }
 };
-
 
