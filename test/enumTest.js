@@ -564,6 +564,19 @@
 
       });
 
+      describe('with a reserved enumitem name', function() {
+        var reservedKeys = [ '_options', 'get', 'getKey', 'getValue', 'enums', 'isFlaggable' ];
+
+        it('throws an error', function() {
+          for (var k = 0; k < reservedKeys.length; k++) {
+
+            expect(function(){ new e([reservedKeys[k]]); }).to.throwError(new RegExp(reservedKeys[k]));
+
+          }
+        });
+
+      });
+
     });
 
   });
