@@ -583,6 +583,22 @@
 
       });
 
+      describe('with a custom name', function() {
+
+        it('can be given as second argument', function() {
+          var myEnum = new e(['oneFish', 'twoFish'], 'RedFish');
+
+          expect(myEnum.name).to.be('RedFish');
+        });
+
+        it('can be given as an option', function() {
+          var myEnum = new e(['oneFish', 'twoFish'], { name: 'BlueFish' });
+
+          expect(myEnum.name).to.be('BlueFish');
+        });
+
+      });
+
     });
 
   });
