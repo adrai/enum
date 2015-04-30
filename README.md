@@ -82,6 +82,10 @@ myEnum.get('one'); // => myEnum.One
 myEnum.get('TWO'); // => myEnum.tWo
 myEnum.ThrEE.is('three'); // => true
 
+// this option will make instances of Enum non-extensible
+// (defaults to `false`)
+var myEnum = new Enum(['ONE', 'TWO', 'THREE'], { freez: true });
+
 //define enum type without flag
 var myEnum = new Enum({'None': 0, 'Black':1, 'Red': 2, 'Red2': 3, 'Green': 4, 'Blue': 5});
 myEnum; //=>  Enum {_options: Object, enums: Array[6], None: EnumItem, Black: EnumItem, Red: EnumItem…........}

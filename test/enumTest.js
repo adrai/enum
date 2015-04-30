@@ -376,53 +376,53 @@
 
       describe('on an enum object', function(){
 
-        var myEnum;
+        var frozenEnum;
 
         before(function(){
-          myEnum = new e({'A':1, 'B':2, 'C':4});
+          frozenEnum = new e({'A':1, 'B':2, 'C':4}, { freez: true });
         });
 
         if (envSupportsFreezing()) {
 
           it('can not extend after creation', function() {
 
-            var extendMyEnum = Object.isExtensible(myEnum);
+            var extendMyEnum = Object.isExtensible(frozenEnum);
             expect(extendMyEnum).to.be(false);
 
           });
 
           it('does not accept changes to existing property values, throws', function() {
 
-            expect(myEnum).to.have.property('C');
+            expect(frozenEnum).to.have.property('C');
             expect(function() {
-              myEnum['C'] = 3;
+              frozenEnum['C'] = 3;
             }).to.throwError("The value can not be set; Enum Type is not extensible.");
             expect(function() {
-              Object.defineProperty(myEnum, 'C', {value: 3, writable:true, configurable: true});
+              Object.defineProperty(frozenEnum, 'C', {value: 3, writable:true, configurable: true});
             }).to.throwError();
-            expect(myEnum.get('C')).to.have.property('value', 4);
-            expect(myEnum).to.be(myEnum);
+            expect(frozenEnum.get('C')).to.have.property('value', 4);
+            expect(frozenEnum).to.be(frozenEnum);
 
           });
 
           it('can not define new properties, throws', function() {
 
             expect(function() {
-              Object.defineProperty(myEnum, 'D', {writable: true, enumerable:true});
+              Object.defineProperty(frozenEnum, 'D', {writable: true, enumerable:true});
             }).to.throwError();
-            expect(myEnum.D).to.be(undefined);
-            expect(myEnum).not.to.have.property('D');
-            expect(myEnum).to.be(myEnum);
+            expect(frozenEnum.D).to.be(undefined);
+            expect(frozenEnum).not.to.have.property('D');
+            expect(frozenEnum).to.be(frozenEnum);
 
           });
 
           it('is persistent to deletes', function() {
 
-            var deleteEnumItem = delete myEnum['A'];
+            var deleteEnumItem = delete frozenEnum['A'];
             expect(deleteEnumItem).to.be(false);
-            expect(myEnum).to.have.property('A');
-            expect(myEnum.get('A')).to.have.property('value', 1);
-            expect(myEnum).to.be(myEnum);
+            expect(frozenEnum).to.have.property('A');
+            expect(frozenEnum.get('A')).to.have.property('value', 1);
+            expect(frozenEnum).to.be(frozenEnum);
 
           });
         }

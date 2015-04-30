@@ -31,6 +31,7 @@ export default class Enum {
     this._options.separator = this._options.separator || " | ";
     this._options.endianness = this._options.endianness || endianness;
     this._options.ignoreCase = this._options.ignoreCase || false;
+    this._options.freez = this._options.freez || false;
 
     this.enums = [];
 
@@ -75,7 +76,9 @@ export default class Enum {
     }
 
     this.isFlaggable = isFlaggable();
-    this.freezeEnums(); //this will make instances of Enum non-extensible
+    if (this._options.freez) {
+        this.freezeEnums(); //this will make instances of Enum non-extensible
+    }
   }
 
   /**
