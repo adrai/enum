@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var browserify = require('gulp-browserify');
 var babel = require('gulp-babel');
 var mocha = require('gulp-mocha');
+var benchmark = require('gulp-bench');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var rimraf = require('gulp-rimraf');
@@ -32,6 +33,11 @@ gulp.task('test', ['es6-test'], function() {
       return gulp.src('lib/*.js')
         .pipe(rimraf());
     });
+});
+
+gulp.task('bench', ['es6-test'], function () {
+    return gulp.src('bench/*.js', {read: false})
+        .pipe(benchmark());
 });
 
 gulp.task('zuul', shell.task([

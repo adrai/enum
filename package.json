@@ -15,6 +15,7 @@
     "expect.js": ">= 0.1.2",
     "gulp": "^3.8.11",
     "gulp-babel": "^4.0.0",
+    "gulp-bench": "^1.1.0",
     "gulp-browserify": "^0.5.1",
     "gulp-mocha": "^2.0.0",
     "gulp-rename": "^1.2.0",
