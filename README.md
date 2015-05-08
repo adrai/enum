@@ -21,8 +21,8 @@ Releases for a browser are available for download from GitHub.
 
 | **Version** | **Description** | **Size** |
 |:------------|:----------------|:---------|
-| `enum-2.0.2.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/enum-2.0.2.js) |
-| `enum-2.0.2.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/enum-2.0.2.min.js) |
+| `enum-2.1.0.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/enum-2.1.0.js) |
+| `enum-2.1.0.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/enum-2.1.0.min.js) |
 
 # Installation (node.js)
 
@@ -192,7 +192,7 @@ Object.defineProperty(myEnum, D, {value:6, writable:false, enumerable:true});
 
 # License
 
-Copyright (c) 2015 Adriano Raiano
+Copyright (c) 2015 Adriano Raiano, Christoph Hermann
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
