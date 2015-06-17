@@ -99,6 +99,17 @@ for(var i=0; i<=5; i++){ console.log(myEnum.get(i).value + '=> '+ myEnum.get(i).
     4=> Green
     5=> Blue
 
+// iterating over an enum
+myEnum.enums.forEach(function(enumItem) {
+  console.log(enumItem.key);
+});
+// => None
+// => Black
+// => Red
+// => Red2
+// => Green
+// => Blue
+
 // get your item
 myEnum.A
 
