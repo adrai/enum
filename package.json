@@ -45,6 +45,10 @@
   ],
   "scripts": {
     "test": "gulp test-ci",
+    "build": "gulp build",
+    "patch-release": "npm run build && npm run test && npm version patch && npm publish && git push --follow-tags",
+    "minor-release": "npm run build && npm run test && npm version minor && npm publish && git push --follow-tags",
+    "major-release": "npm run build && npm run test && npm version major && npm publish && git push --follow-tags",
     "prepublish": "gulp"
   },
   "testling": {
