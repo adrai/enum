@@ -96,6 +96,27 @@ var Enum = (function () {
   }
 
   /**
+   * Returns an array of objects with key / value pairs for the elements of the enumeration.
+   * @return {Array} Objects with key / value attributes
+   */
+
+  Enum.prototype.toTuples = function toTuples() {
+        
+        var elements = [];
+        
+        this.enums.forEach(function (element) {
+            if (element.key) {
+                elements.push({ 'key': element.key, 'value': element.value });
+            } else {
+                elements.push(element.value);
+            }
+        });
+        
+        return elements;
+
+    };  
+  
+  /**
    * Returns the appropriate EnumItem key.
    * @param  {EnumItem || String || Number} key The object to get with.
    * @return {String}                           The get result.
@@ -285,7 +306,7 @@ module.exports = Enum;
 
 // private
 
-var reservedKeys = ["_options", "get", "getKey", "getValue", "enums", "isFlaggable"];
+var reservedKeys = ["_options", "get", "getKey", "getValue", "enums", "isFlaggable", "toTuples"];
 
 function guardReservedKeys(customName, key) {
   if (customName && key === "name" || indexOf.call(reservedKeys, key) >= 0) {
