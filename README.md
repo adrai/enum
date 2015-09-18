@@ -91,6 +91,9 @@ var myEnum = new Enum({'None': 0, 'Black':1, 'Red': 2, 'Red2': 3, 'Green': 4, 'B
 myEnum; //=>  Enum {_options: Object, enums: Array[6], None: EnumItem, Black: EnumItem, Red: EnumItem…........}
 myEnum.isFlaggable; //=> false
 
+myEnum.toJSON(); // returns {'None': 0, 'Black':1, 'Red': 2, 'Red2': 3, 'Green': 4, 'Blue': 5}
+JSON.stringify(myEnum); // returns '{"None":0,"Black":1,"Red":2,"Red2":3,"Green":4,"Blue":5}'
+
 for(var i=0; i<=5; i++){ console.log(myEnum.get(i).value + '=> '+ myEnum.get(i).key)}
     0=> None
     1=> Black

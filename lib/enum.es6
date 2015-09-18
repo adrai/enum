@@ -49,6 +49,7 @@ export default class Enum {
       this[member] = new EnumItem(member, map[member], { ignoreCase: this._options.ignoreCase });
       this.enums.push(this[member]);
     }
+    this._enumMap = map;
 
     if (this._options.ignoreCase) {
       this.getLowerCaseEnums = function () {
@@ -251,6 +252,14 @@ export default class Enum {
   }
 
   /**
+   * Returns JSON object representation of this Enum.
+   * @return {String} JSON object representation of this Enum.
+   */
+  toJSON() {
+    return this._enumMap;
+  }
+
+  /**
    * Registers the Enum Type globally in node.js.
    * @param  {String} key Global variable. [optional]
    */
@@ -263,7 +272,7 @@ export default class Enum {
 
 // private
 
-var reservedKeys = ['_options', 'get', 'getKey', 'getValue', 'enums', 'isFlaggable'];
+var reservedKeys = ['_options', 'get', 'getKey', 'getValue', 'enums', 'isFlaggable', '_enumMap', 'toJSON'];
 
 function guardReservedKeys(customName, key) {
   if ((customName && key === 'name') || indexOf.call(reservedKeys, key) >= 0) {

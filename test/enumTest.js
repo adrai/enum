@@ -48,6 +48,29 @@
 
         });
 
+        describe('calling toJSON', function () {
+
+          it('it should return a copy of the whole enum type', function() {
+
+            var json = myEnum.toJSON();
+            expect(json).to.have.property('A', 1);
+            expect(json).to.have.property('B', 2);
+            expect(json).to.have.property('C', 4);
+
+          });
+
+        });
+
+        describe('stringifying', function () {
+
+          it('it should return a copy of the whole enum type', function() {
+
+            expect(JSON.stringify(myEnum)).to.be('{"A":1,"B":2,"C":4}');
+
+          });
+
+        });
+
         describe('it should be possible to', function() {
 
           it('get an enum item', function() {
