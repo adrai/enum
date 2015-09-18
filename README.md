@@ -21,8 +21,8 @@ Releases for a browser are available for download from GitHub.
 
 | **Version** | **Description** | **Size** |
 |:------------|:----------------|:---------|
-| `enum-2.1.0.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/enum-2.1.0.js) |
-| `enum-2.1.0.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/enum-2.1.0.min.js) |
+| `enum-2.2.0.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/enum-2.2.0.js) |
+| `enum-2.2.0.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/enum-2.2.0.min.js) |
 
 # Installation (node.js)
 

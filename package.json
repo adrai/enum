@@ -1,7 +1,7 @@
 {
   "author": "adrai",
   "name": "enum",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": false,
   "main": "index.js",
   "engines": {
