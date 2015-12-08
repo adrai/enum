@@ -36,6 +36,7 @@ export default class Enum {
     this.enums = [];
 
     if (map.length) {
+      this._enumLastIndex = map.length;
       var array = map;
       map = {};
 
@@ -260,6 +261,39 @@ export default class Enum {
   }
 
   /**
+   * Extends the existing Enum with a New Map.
+   * @param  {Array}  map  Map to extend from
+   */
+  extend(map) {
+    if (map.length) {
+      var array = map;
+      map = {};
+
+      for (var i = 0; i <  array.length; i++) {
+        var exponent = this._enumLastIndex + i;
+        map[array[i]] = Math.pow(2, exponent);
+      }
+
+      for (var member in map) {
+        guardReservedKeys(this._options.name, member);
+        this[member] = new EnumItem(member, map[member], { ignoreCase: this._options.ignoreCase });
+        this.enums.push(this[member]);
+      }
+
+      for (var key in this._enumMap) { 
+        map[key] = this._enumMap[key];
+      }
+
+      this._enumLastIndex += map.length;
+      this._enumMap = map;
+
+      if (this._options.freez) {
+          this.freezeEnums(); //this will make instances of new Enum non-extensible
+      }
+    }
+  };
+
+  /**
    * Registers the Enum Type globally in node.js.
    * @param  {String} key Global variable. [optional]
    */
@@ -272,7 +306,7 @@ export default class Enum {
 
 // private
 
-var reservedKeys = ['_options', 'get', 'getKey', 'getValue', 'enums', 'isFlaggable', '_enumMap', 'toJSON'];
+var reservedKeys = ['_options', 'get', 'getKey', 'getValue', 'enums', 'isFlaggable', '_enumMap', 'toJSON', '_enumLastIndex'];
 
 function guardReservedKeys(customName, key) {
   if ((customName && key === 'name') || indexOf.call(reservedKeys, key) >= 0) {
