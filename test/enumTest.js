@@ -563,6 +563,18 @@
 
         });
 
+        it('should extend with another array', function() {
+
+          var myEnum = new e(['A', 'B', 'C']);
+
+          var assignedValues = { D: 8, E: 16, F: 32 };
+          myEnum.extend(['D', 'E', 'F']);
+
+          expect(myEnum.D.value).to.eql(assignedValues.D);
+          expect(myEnum.E.value).to.eql(assignedValues.E);
+          expect(myEnum.F.value).to.eql(assignedValues.F);
+        });
+
       });
 
       describe('being not case sensitive', function() {
