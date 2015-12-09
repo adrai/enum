@@ -79,7 +79,7 @@ export default class Enum {
 
     this.isFlaggable = isFlaggable();
     if (this._options.freez) {
-        this.freezeEnums(); //this will make instances of Enum non-extensible
+      this.freezeEnums(); //this will make instances of Enum non-extensible
     }
   }
 
@@ -280,7 +280,7 @@ export default class Enum {
         this.enums.push(this[member]);
       }
 
-      for (var key in this._enumMap) { 
+      for (var key in this._enumMap) {
         map[key] = this._enumMap[key];
       }
 
@@ -288,7 +288,7 @@ export default class Enum {
       this._enumMap = map;
 
       if (this._options.freez) {
-          this.freezeEnums(); //this will make instances of new Enum non-extensible
+        this.freezeEnums(); //this will make instances of new Enum non-extensible
       }
     }
   };
