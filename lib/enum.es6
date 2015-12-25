@@ -4,6 +4,7 @@ import os from 'os';
 import EnumItem from './enumItem';
 import { isString } from './isType';
 import { indexOf } from './indexOf';
+import isBuffer from 'is-buffer';
 
 const endianness = os.endianness();
 
@@ -116,7 +117,7 @@ export default class Enum {
     if (key === null || key === undefined) {
       return;
     } // Buffer instance support, part of the ref Type interface
-    if (Buffer.isBuffer(key)) {
+    if (isBuffer(key)) {
       key = key["readUInt32" + this._options.endianness](offset || 0);
     }
 
