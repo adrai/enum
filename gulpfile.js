@@ -55,7 +55,6 @@ gulp.task('build', ['es6-build'], function() {
   return gulp.src('index.js')
     .pipe(browserify({
       standalone: 'Enum',
-      insertGlobals : true,
       debug : !gulp.env.production
     }))
     .pipe(rename('enum-' + version + '.js'))

@@ -10,7 +10,9 @@
   "directories": {
     "lib": "./lib"
   },
-  "dependencies": {},
+  "dependencies": {
+    "is-buffer": "^1.1.0"
+  },
   "devDependencies": {
     "expect.js": ">= 0.1.2",
     "gulp": "^3.8.11",
