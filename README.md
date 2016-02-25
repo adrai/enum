@@ -150,9 +150,6 @@ myEnum.A.is('A')
 myEnum.A.is(1)
 
 // or
-myEnum.A == 'A'
-
-// or
 myEnum.A == myEnum.A
 
 // or
