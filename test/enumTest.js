@@ -131,6 +131,29 @@
 
           describe('compare', function() {
 
+            describe('an item', function() {
+
+              it('has been defined', function() {
+
+                expect(myEnum.isDefined(myEnum.A)).to.be(true);
+
+                var myEnum2 = new e({'A': 1, 'B': 2, 'C': 4});
+                expect(myEnum2.isDefined(myEnum2.B)).to.be(true);
+                
+                expect(myEnum.isDefined(myEnum2.C)).to.be(false);
+                expect(myEnum2.isDefined(myEnum.A)).to.be(false);
+                
+                expect(myEnum.isDefined(myEnum)).to.be(false);
+                expect(myEnum.isDefined(myEnum2)).to.be(false);
+                
+                expect(myEnum.isDefined()).to.be(false);
+                expect(myEnum.isDefined({})).to.be(false);
+                expect(myEnum.isDefined(null)).to.be(false);
+                expect(myEnum.isDefined(undefined)).to.be(false);
+
+              });
+            });
+            
             describe('an item and an item', function() {
 
               it('with is', function() {
