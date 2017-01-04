@@ -254,6 +254,15 @@ export default class Enum {
   }
 
   /**
+   * Return true whether the enumItem parameter passed in is an EnumItem object and 
+   * has been included as constant of this Enum   
+   * @param  {EnumItem} enumItem
+   */
+  isDefined(enumItem){
+    return enumItem instanceof EnumItem && enumItem === this.enums.find((e) => e.is(enumItem));
+  }
+
+  /**
    * Returns JSON object representation of this Enum.
    * @return {String} JSON object representation of this Enum.
    */
