@@ -2,7 +2,7 @@
 
 import os from 'os';
 import EnumItem from './enumItem';
-import { isString } from './isType';
+import { isString, isNumber } from './isType';
 import { indexOf } from './indexOf';
 import isBuffer from 'is-buffer';
 
@@ -253,6 +253,19 @@ export default class Enum {
     return this;
   }
 
+  /**
+   * Return true whether the enumItem parameter passed in is an EnumItem object and 
+   * has been included as constant of this Enum   
+   * @param  {EnumItem} enumItem
+   */
+  isDefined(enumItem){
+    let condition = (e) => e === enumItem;
+    if (isString(enumItem) || isNumber(enumItem)) {
+      condition = (e) => e.is(enumItem);
+    }
+    return this.enums.some(condition);
+  }
+  
   /**
    * Returns JSON object representation of this Enum.
    * @return {String} JSON object representation of this Enum.
