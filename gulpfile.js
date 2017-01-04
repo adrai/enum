@@ -44,7 +44,7 @@ gulp.task('zuul', shell.task([
   '$(npm bin)/zuul -- test/enumTest.js'
 ]));
 
-gulp.task('test-ci', ['test', 'zuul']);
+gulp.task('test-ci', ['test'/*, 'zuul'*/]);
 
 gulp.task('es6-build', function() {
   return compile()
