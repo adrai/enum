@@ -136,6 +136,10 @@ myEnum.A.key
 // get all items
 myEnum.enums // returns all enums in an array
 
+// check if it's defined
+myEnum.isDefined(myEnum.A) // returns true
+myEnum.isDefined('A')      // returns true
+myEnum.isDefined(1)        // returns true
 
 // compare
 myEnum.A.is(myEnum.A)
@@ -200,7 +204,7 @@ Object.defineProperty(myEnum, D, {value:6, writable:false, enumerable:true});
 
 # License
 
-Copyright (c) 2015 Adriano Raiano, Christoph Hermann
+Copyright (c) 2016 Adriano Raiano, Christoph Hermann
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
