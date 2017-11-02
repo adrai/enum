@@ -316,6 +316,13 @@ export default class Enum {
       global[key] = Enum;
     }
   }
+
+  [Symbol.iterator]() {
+    let index = 0
+    return {
+      next: () => index < this.enums.length ? {done: false, value: this.enums[index++]} : {done: true}
+    }
+  }
 };
 
 // private
