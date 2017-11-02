@@ -670,5 +670,16 @@
 
     });
 
+    describe('iterating an enum', function() {
+      var values = ['A', 'B', 'D']
+      var myEnum = new e(values)
+
+      it('should iterate through the enum items', function() {
+        for (let enumItem of myEnum) {
+          expect(enumItem).to.equal(myEnum.get(enumItem.key))
+        }
+      })
+    })
+
   });
 })(this);
