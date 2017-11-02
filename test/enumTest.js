@@ -675,9 +675,13 @@
       var myEnum = new e(values)
 
       it('should iterate through the enum items', function() {
+        let index = 0
         for (let enumItem of myEnum) {
+          expect(enumItem.key).to.equal(values[index])
           expect(enumItem).to.equal(myEnum.get(enumItem.key))
+          index++
         }
+        expect(index).to.equal(values.length)
       })
     })
 
