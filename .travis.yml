@@ -1,20 +1,12 @@
 sudo: false
 language: node_js
 node_js:
-- '0.12'
-- '4'
-- '6'
 - '8'
 - '10'
+- '12'
 branches:
   only:
   - master
 notifications:
   email:
   - adriano@raiano.ch
-env:
-  global:
-  - secure: rKH7TYjITMgNERLddI2pWA6aOjtFU+V3/4GKzceDFRgNh6+93me/l380mhs+qE+sRHb+KzMRxIi6Fk9wNF59hvbdsivTomdUQNItVmiSYxkhJMoaaeNjyLH8AyZjmV1u6czNRKGblrFbLN2cWc1FFn4Yz96wLQlQqnruNP5PRzM=
-  - secure: h7T4blCnspXlXi19ssRPNUyOsolxd7Ukg/NkG07TPIUHYYanyjpvZLAWnAD3RvwV5za7Fh9fq1dB+N2MvDKfH8BGOTcI7yilGtNEUiMjGVTsZsrtnThD5RnzIv4LkIDzWcSYZdeVW0CArehIVnVqSMRHRnmKNb+oq/j4huM1Vgg=
-  - secure: D21wy9xHUk97mfdfttk+sQovIQlI9H0B+Xpgz5smziTYJb3eTwYiNxnFjjWpOw+PwdNG4CyEFTGcWumERpwx7bRP+04QuuyVyvMQg3qPlMw298Je0bie571ttC4VLQX94ULUFuHx4keVnAg+LYjHgJ+Wiut2JDuoh3YzKUl7u5I=
-  - secure: FT4JfHBu8VkgvMLcHmSxYyeDFb/IE1gSVh87qJYtsenWksAi1A9gAnx8Rp7DMprtwk1urKwJ4zTvKyFOnKmw/tAnlwPb99gCoUA54E20aIul3chxHMUzJkCL1Ri5V65wNB2t3WMCgPSJJnzD1UgLbTNlU6K3s9I8jsddEhdVfKs=

@@ -1,31 +1,37 @@
 {
   "author": "adrai",
   "name": "enum",
-  "version": "2.5.0",
+  "version": "3.0.0",
   "private": false,
-  "main": "index.js",
+  "type": "module",
+  "main": "./cjs/enum.js",
+  "exports": {
+    ".": {
+      "require": "./cjs/enum.js",
+      "default": "./lib/enum.js"
+    }
+  },
+  "module": "./lib/enum.js",
   "engines": {
     "node": ">=0.6.0"
   },
-  "directories": {
-    "lib": "./lib"
-  },
-  "dependencies": {
-    "is-buffer": "^1.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "expect.js": ">= 0.1.2",
-    "gulp": "^3.8.11",
-    "gulp-babel": "^4.0.0",
-    "gulp-bench": "^1.1.0",
-    "gulp-browserify": "^0.5.1",
-    "gulp-mocha": "^2.0.0",
-    "gulp-rename": "^1.2.0",
-    "gulp-rimraf": "^0.1.1",
-    "gulp-shell": "^0.4.0",
-    "gulp-uglify": "^1.1.0",
-    "mocha": "3.x.x",
-    "zuul": ">= 1.0.1"
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.9.0",
+    "@babel/preset-env": "7.9.5",
+    "babel-plugin-add-module-exports": "1.0.2",
+    "browserify": "16.5.1",
+    "eslint": "6.8.0",
+    "eslint-config-standard": "14.1.1",
+    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-node": "11.0.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-require-path-exists": "1.1.9",
+    "eslint-plugin-standard": "4.0.1",
+    "expect.js": "0.3.1",
+    "mocha": "7.1.1",
+    "uglify-js": "3.8.1"
   },
   "description": "Enum is a javascript module that introduces the Enum Type. It works for node.js and in the browser.",
   "keywords": [
@@ -46,25 +52,10 @@
     }
   ],
   "scripts": {
-    "test": "gulp test-ci",
-    "build": "gulp build",
-    "prepublish": "gulp"
-  },
-  "testling": {
-    "browsers": [
-      "ie/6..latest",
-      "firefox/17..latest",
-      "firefox/nightly",
-      "chrome/22..latest",
-      "chrome/canary",
-      "opera/12..latest",
-      "opera/next",
-      "safari/5.1..latest",
-      "ipad/6.0..latest",
-      "iphone/6.0..latest",
-      "android-browser/4.2..latest"
-    ],
-    "harness": "mocha",
-    "files": "test/*.js"
+    "lint": "eslint .",
+    "compile": "rm -rf cjs && mkdir cjs && babel lib -d cjs --presets=@babel/preset-env --plugins=add-module-exports && echo '{\"type\":\"commonjs\"}' > cjs/package.json",
+    "browser": "rm -rf dist && mkdir dist && browserify --standalone Enum cjs/enum.js -o dist/enum-$npm_package_version.js && uglifyjs dist/enum-$npm_package_version.js --compress --mangle -o dist/enum-$npm_package_version.min.js",
+    "build": "npm run compile && npm run browser",
+    "test": "npm run lint && npm run build && mocha test -R spec --globals Enum"
   }
 }

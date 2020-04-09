@@ -1,6 +1,10 @@
-/.*
-/gulpfile.js
-/test
-/bench
-/lib
-!/dist
+.*
+test
+dist
+.gitignore
+.editorconfig
+.eslintignore
+.eslintrc
+.travis.yml
+package-lock.json
+README.md

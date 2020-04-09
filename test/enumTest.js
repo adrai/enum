@@ -1,7 +1,7 @@
 (function(global){
   var expect = global.expect || require('expect.js');
   var endianness = global.Enum ? 'LE' : require('os').endianness();
-  var e = global.Enum || require('../dist/enum');
+  var e = global.Enum || require('../');
 
   // for zuul / saucelabs
   Enum = undefined;
