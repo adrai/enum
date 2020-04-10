@@ -11,8 +11,8 @@ Releases for a browser are available for download from GitHub.
 
 | **Version** | **Description** | **Size** |
 |:------------|:----------------|:---------|
-| `enum-3.0.2.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/dist/enum-3.0.2.js) |
-| `enum-3.0.2.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/dist/enum-3.0.2.min.js) |
+| `enum-3.0.3.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/dist/enum-3.0.3.js) |
+| `enum-3.0.3.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/dist/enum-3.0.3.min.js) |
 
 # Installation (node.js)
 
@@ -20,7 +20,7 @@ Releases for a browser are available for download from GitHub.
 
 # Installation (browser)
 
-    <script src="enum.js"></script>
+[download](#download) the standalone file
 
 # Usage
 
@@ -28,14 +28,17 @@ Releases for a browser are available for download from GitHub.
 // use it as module
 const Enum = require('enum')
 
-// or extend node.js with this new type
-require('enum').register()
-
 // or with import
 import Enum from 'enum'
 
 // or in deno
 import Enum from 'https://deno.land/x/enum/index.js'
+
+// or in browser
+<script src="enum.js"></script>
+
+// or extend node.js, deno or browser global/window with this new type
+Enum.register()
 
 // define a simple enum (automatically flaggable -> A: 0x01, B: 0x02, C: 0x04)
 //Uses bitwise 'OR' operation in between the values and creates enumerated constants. For example, if 'Read':1, 'Write':2, then ReadWrite= Read | Write = 1 | 2 = 3

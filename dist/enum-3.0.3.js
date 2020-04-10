@@ -423,8 +423,10 @@ var Enum = /*#__PURE__*/function () {
     value: function register() {
       var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Enum';
 
-      if (!global[key]) {
+      if (typeof global !== 'undefined' && !global[key]) {
         global[key] = Enum;
+      } else if (typeof window !== 'undefined' && !window[key]) {
+        window[key] = Enum;
       }
     }
   }]);
