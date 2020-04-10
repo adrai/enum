@@ -11,8 +11,8 @@ Releases for a browser are available for download from GitHub.
 
 | **Version** | **Description** | **Size** |
 |:------------|:----------------|:---------|
-| `enum-3.0.0.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/dist/enum-3.0.0.js) |
-| `enum-3.0.0.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/dist/enum-3.0.0.min.js) |
+| `enum-3.0.1.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/dist/enum-3.0.1.js) |
+| `enum-3.0.1.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/dist/enum-3.0.1.min.js) |
 
 # Installation (node.js)
 
@@ -77,7 +77,7 @@ myEnum.ThrEE.is('three') // => true
 
 // this option will make instances of Enum non-extensible
 // (defaults to `false`)
-const myEnum = new Enum(['ONE', 'TWO', 'THREE'], { freez: true })
+const myEnum = new Enum(['ONE', 'TWO', 'THREE'], { freeze: true })
 
 //define enum type without flag
 const myEnum = new Enum({'None': 0, 'Black':1, 'Red': 2, 'Red2': 3, 'Green': 4, 'Blue': 5})

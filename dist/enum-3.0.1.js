@@ -75,7 +75,9 @@ var Enum = /*#__PURE__*/function () {
     this._options.separator = this._options.separator || ' | ';
     this._options.endianness = this._options.endianness || endianness;
     this._options.ignoreCase = this._options.ignoreCase || false;
-    this._options.freez = this._options.freez || false;
+    this._options.freez = this._options.freez || false; // backword compatability
+
+    this._options.freeze = this._options.freeze || this._options.freez || false;
     this.enums = [];
 
     if (map.length) {
@@ -128,7 +130,7 @@ var Enum = /*#__PURE__*/function () {
 
     this.isFlaggable = isFlaggable();
 
-    if (this._options.freez) {
+    if (this._options.freeze) {
       this.freezeEnums(); // this will make instances of Enum non-extensible
     }
   }
@@ -389,7 +391,7 @@ var Enum = /*#__PURE__*/function () {
         this._enumLastIndex += map.length;
         this._enumMap = map;
 
-        if (this._options.freez) {
+        if (this._options.freeze) {
           this.freezeEnums(); // this will make instances of new Enum non-extensible
         }
       }

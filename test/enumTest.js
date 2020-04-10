@@ -143,13 +143,13 @@
                 expect(myEnum2.isDefined(myEnum2.C)).to.be(true);
                 expect(myEnum2.isDefined('C')).to.be(true);
                 expect(myEnum2.isDefined(4)).to.be(true);
-                
+
                 expect(myEnum.isDefined(myEnum2.C)).to.be(false);
                 expect(myEnum2.isDefined(myEnum.A)).to.be(false);
-                
+
                 expect(myEnum.isDefined(myEnum)).to.be(false);
                 expect(myEnum.isDefined(myEnum2)).to.be(false);
-                
+
                 expect(myEnum.isDefined()).to.be(false);
                 expect(myEnum.isDefined('Z')).to.be(false);
                 expect(myEnum.isDefined(10)).to.be(false);
@@ -160,7 +160,7 @@
               });
 
             });
-            
+
             describe('an item and an item', function() {
 
               it('with is', function() {
@@ -432,7 +432,7 @@
         var frozenEnum;
 
         before(function(){
-          frozenEnum = new e({'A':1, 'B':2, 'C':4}, { freez: true });
+          frozenEnum = new e({'A':1, 'B':2, 'C':4}, { freeze: true });
         });
 
         if (envSupportsFreezing()) {
