@@ -43,7 +43,7 @@ const myEnum = new Enum(['Black', 'Red', 'Green', 'Blue'])
 myEnum //=> Enum {_options: Object, enums: Array[4], Black: EnumItem, Red: EnumItem, Green: EnumItem….....}
 myEnum.isFlaggable //=> true
 
-for (const i=1 i<8 i++){ console.log(myEnum.get(i).value + '=> '+ myEnum.get(i).key)}
+for (let i=1; i<8; i++){ console.log(myEnum.get(i).value + '=> '+ myEnum.get(i).key)}
     1=> Black
     2=> Red
     3=> Black | Red
