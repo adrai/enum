@@ -34,6 +34,9 @@ require('enum').register()
 // or with import
 import Enum from 'enum'
 
+// or in deno
+import Enum from 'https://cdn.jsdelivr.net/gh/adrai/enum/index.js'
+
 // define a simple enum (automatically flaggable -> A: 0x01, B: 0x02, C: 0x04)
 //Uses bitwise 'OR' operation in between the values and creates enumerated constants. For example, if 'Read':1, 'Write':2, then ReadWrite= Read | Write = 1 | 2 = 3
 const myEnum = new Enum(['A', 'B', 'C'])
