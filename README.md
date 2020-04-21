@@ -1,6 +1,8 @@
 # Introduction
 
-[![travis](https://img.shields.io/travis/adrai/enum.svg)](https://travis-ci.org/adrai/enum) [![npm](https://img.shields.io/npm/v/enum.svg)](https://npmjs.org/package/enum)
+[![Actions](https://github.com/adrai/enum/workflows/node/badge.svg)](https://github.com/adrai/enum/actions?query=workflow%3Anode)
+[![travis](https://img.shields.io/travis/adrai/enum.svg)](https://travis-ci.org/adrai/enum)
+[![npm](https://img.shields.io/npm/v/enum.svg)](https://npmjs.org/package/enum)
 
 Enum is a javascript module that introduces the Enum Type. It works for node.js, in the browser and for deno.
 
