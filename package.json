@@ -6,6 +6,7 @@
   "type": "module",
   "main": "./cjs/enum.js",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
       "require": "./cjs/enum.js",
       "default": "./lib/enum.js"
