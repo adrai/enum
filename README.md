@@ -13,8 +13,8 @@ Releases for a browser are available for download from GitHub.
 
 | **Version** | **Description** | **Size** |
 |:------------|:----------------|:---------|
-| `enum-3.0.3.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/dist/enum-3.0.3.js) |
-| `enum-3.0.3.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/dist/enum-3.0.3.min.js) |
+| `enum-3.0.4.js` | *uncompressed, with comments* | [Download](https://raw.github.com/adrai/enum/master/dist/enum-3.0.4.js) |
+| `enum-3.0.4.min.js` | *compressed, without comments* | [Download](https://raw.github.com/adrai/enum/master/dist/enum-3.0.4.min.js) |
 
 # Installation (node.js)
 
